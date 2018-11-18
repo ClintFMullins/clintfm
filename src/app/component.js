@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Homepage } from '../pages/homepage/component';
+import { Navigation } from '../features/navigation/component';
 import { Switch, Route } from 'react-router-dom'
+import { Projects } from '../pages/projects/component';
 import './style.css';
 
-function App() {
-  const [state, setState] = useState(0);
-
+export function App() {
   return (
-    <Switch>
-      <Route exact path='/' component={Homepage}/>
-    </Switch>
+    <>
+      <Navigation />
+      <Switch>
+        <Route exact path='/' component={Homepage}/>
+        <Route exact path='/projects' component={Projects}/>
+      </Switch>
+    </>
   );
 }
-
-export default App;

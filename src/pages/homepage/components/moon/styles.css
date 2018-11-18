@@ -1,0 +1,19 @@
+.moon-wrapper-wrapper {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.moon-wrapper {
+  height: 100%;
+  background-color: blue;
+  position: relative;
+}
+
+.moon {
+  border-radius: 50px;
+  background-color: black;
+  position: absolute;
+}
