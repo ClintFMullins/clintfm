@@ -77,10 +77,6 @@ export function getSectionOpacity(currentHour, sectionPeaks, maxDistance) {
       (24 - currentHour) + sectionNum;
     const distance = Math.min(distanceDirect, distanceIndirect);
 
-    if (currentHour === 0) {
-      console.log({currentHour, maxDistance, distanceDirect, distanceIndirect})
-    }
-
     return distance > maxDistance ? 0 : (maxDistance - distance) / maxDistance;
   });
 }

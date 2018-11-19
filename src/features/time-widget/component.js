@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { renderInterval } from '../../utils/render-interval';
 import { getDayNightDetails, getChangingDayNightDetails } from '../../utils/time';
 import { SkySphere } from './components/sky-sphere/component';
@@ -10,6 +10,8 @@ const TIME_UPDATE_INTERVAL_MS = 20 * 1000;
 export function TimeWidget(props) {
   const pixelSize = `${props.size}px`;
 
+  const [showCurrentTime, setShowCurrentTime] = useState(true);
+
   const borderSize = Math.max(1, Math.min(3, props.size / 50));
 
   const wrapperStyle = {
@@ -17,6 +19,19 @@ export function TimeWidget(props) {
     height: pixelSize,
     border: `solid black ${borderSize}px`,
   }
+
+  function onMouseEnter() {
+    setShowCurrentTime(false);
+  }
+
+  function onMouseLeave() {
+    setShowCurrentTime(true);
+  }
+
+  const details1 = renderInterval(TIME_UPDATE_INTERVAL_MS, getDayNightDetails);
+  const details2 = getChangingDayNightDetails();
+
+  const dayNightDetails = showCurrentTime ? details1 : details2;
 
   const {
     hour,
@@ -31,7 +46,7 @@ export function TimeWidget(props) {
     noonPeakPercent,
     eveningPercent,
     eveningPeakPercent,
-  } = renderInterval(TIME_UPDATE_INTERVAL_MS, getDayNightDetails);
+  } = dayNightDetails;
 
   // const {
   //   hour,
@@ -49,7 +64,7 @@ export function TimeWidget(props) {
   // } = getChangingDayNightDetails();
 
   return (
-    <div className="time-widget-wrapper" style={wrapperStyle}>
+    <div className="time-widget-wrapper" style={wrapperStyle} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div className="sky">
         <div className="light-filter time-sky-night" style={{ opacity: nightPercent }} />
         <div className="light-filter time-sky-night-peak" style={{ opacity: nightPeakPercent }} />

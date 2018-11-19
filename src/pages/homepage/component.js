@@ -6,7 +6,7 @@ export function Homepage() {
   return (
     <div style={{ background: 'eggshell' }}>
       <div>
-        <TimeWidget size={100} />
+        <TimeWidget size={200} />
       </div>
     </div>
   );
