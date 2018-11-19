@@ -1,0 +1,23 @@
+.sky-sphere-center {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sky-sphere-wrapper {
+  width: 80%;
+  height: 70%;
+  transform: translateY(20%);
+  position: relative;
+}
+
+.sky-sphere {
+  border-radius: 100%;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: all 200ms linear;
+  box-shadow: 0 0 20px #9ecaed;
+}

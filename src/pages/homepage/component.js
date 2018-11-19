@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { getDayNightDetails } from '../../utils/time';
-import { Moon } from './components/moon/component';
+import React from 'react';
+import { TimeWidget } from '../../features/time-widget/component';
 import './style.css';
 
-const TIME_UPDATE_INTERVAL_MS = 20 * 1000;
-
 export function Homepage() {
-  const dayNightDetails = intervalUpdatingDayNightDetails(TIME_UPDATE_INTERVAL_MS)
-
   return (
-    <div>
-      <Moon translate={dayNightDetails.moonHeight} />
+    <div style={{ background: 'eggshell' }}>
+      <TimeWidget size={10} />
+      <TimeWidget size={50} />
+      <TimeWidget size={100} />
+      <TimeWidget size={200} />
+      <TimeWidget size={500} />
     </div>
   );
-}
-
-function intervalUpdatingDayNightDetails(intervalMs) {
-  const [dayNightDetails, setDayNightDetails] = useState(getDayNightDetails());
-
-  useEffect(() => {
-    setInterval(() => {
-      setDayNightDetails(getDayNightDetails());
-    }, intervalMs);
-  }, []);
-
-  return dayNightDetails;
 }
