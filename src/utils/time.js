@@ -22,7 +22,7 @@ export function getChangingDayNightDetails() {
   useEffect(() => {
     const interval = setInterval(() => {
       setHour((hour + 1) % DAY_SCALE);
-    }, 800);
+    }, 100);
 
     return () => {
       clearInterval(interval);
@@ -31,9 +31,6 @@ export function getChangingDayNightDetails() {
 
   return calculateDayNightDetails(hour, 0);
 }
-
-const PEAK_DAY = 12;
-
 
 export function calculateDayNightDetails(hour, minute) {
   // 0-12 = Night, 12-24 = Day, easier for calculations
@@ -46,16 +43,20 @@ export function calculateDayNightDetails(hour, minute) {
   const skySpherePercentY = (peakDayNightTime - distanceFromPeak) / peakDayNightTime * 100;
   const skySpherePercentX = (totalReferenceTime * 100 / 12);
 
-  const dayPercents = getSectionOpacity(tiltedHour, [0, 6, 12, 18], 7);
+  const dayPercents = getSectionOpacity(tiltedHour, [0, 3, 6, 9, 12, 15, 18, 21], 4);
 
   return {
     isDay: tiltedHour >= DAY_SCALE_HALF,
     skySpherePercentY,
     skySpherePercentX,
-    nightPercent: dayPercents[1],
-    morningPercent: dayPercents[2],
-    noonPercent: dayPercents[3],
     eveningPercent: dayPercents[0],
+    eveningPeakPercent: dayPercents[1],
+    nightPercent: dayPercents[2],
+    nightPeakPercent: dayPercents[3],
+    morningPercent: dayPercents[4],
+    morningPeakPercent: dayPercents[5],
+    noonPercent: dayPercents[6],
+    noonPeakPercent: dayPercents[7],
     hour,
   };
 }

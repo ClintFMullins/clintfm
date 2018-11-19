@@ -35,38 +35,62 @@
 .light-filter {
   width: 100%;
   height: 100%;
-  transition: opacity 1s linear;
+  transition: opacity 100ms linear;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.time-land-night {
-  background: grey;
-  border-radius: 100%;
-}
-.time-land-morning {
-  background: darkgreen;
-  border-radius: 100%;
-}
-.time-land-noon {
-  background: lightgreen;
-  border-radius: 100%;
-}
-.time-land-evening {
-  background: darkgreen;
+.land {
   border-radius: 100%;
 }
 
+.time-land-night {
+  background: rgb(3, 22, 3);
+}
+.time-land-night-peak {
+  background: rgb(0, 48, 0);
+}
+.time-land-morning {
+  background: darkgreen;
+}
+.time-land-morning-peak {
+  background: darkgreen;
+}
+.time-land-noon {
+  background: lightgreen;
+}
+.time-land-noon-peak {
+  background: lightgreen;
+}
+.time-land-evening {
+  background: darkgreen;
+}
+.time-land-evening-peak {
+  background: rgb(22, 56, 22);
+}
+
 .time-sky-night {
+  background: rgb(0, 0, 66);
+}
+.time-sky-night-peak {
   background: black;
 }
 .time-sky-morning {
+  background: rgb(0, 0, 133);;
+}
+.time-sky-morning-peak {
   background: linear-gradient(#C6E4EE 0%, #C6E4EE 40%, #FED1AE 60%, #FAA0B9 70%, #CB7DCB 80%, #757ECB 100%);
 }
 .time-sky-noon {
   background: lightblue;
 }
+.time-sky-noon-peak {
+  background: lightblue;
+}
 .time-sky-evening {
   background: linear-gradient(to top, #283E51, #0A2342);;
+}
+.time-sky-evening-peak {
+  background: darkblue;
 }

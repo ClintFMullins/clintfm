@@ -7,9 +7,11 @@ export function SkySphere(props) {
   const translateX = (props.percentX / 100) * width;
   const translateY = (props.percentY / 100) * height;
 
+  const size = props.isDay ? props.size : props.size / 2; 
+
   const style = {
-    width: `${props.size}px`,
-    height: `${props.size}px`,
+    width: `${size}px`,
+    height: `${size}px`,
     transform: `translateX(${translateX}px) translateY(-${translateY}px)`,
     backgroundColor: props.isDay ? 'yellow' : 'white',
     display: width ? 'block' : 'none',
@@ -18,7 +20,7 @@ export function SkySphere(props) {
   return (
     <div className="sky-sphere-center">
       <div className="sky-sphere-wrapper" ref={setRef}>
-        <div className="sky-sphere" style={style} />
+        <div className={`sky-sphere ${props.sunshine ? 'sky-sphere-hue' : ''}`} style={style} />
       </div>
     </div>
   );
@@ -40,7 +42,7 @@ function useSizeOfElement() {
       width.current = wrapperRef.current.clientWidth;
       height.current = wrapperRef.current.clientHeight;
     } else {
-      reRender();
+      reRender(); // TODO: not have to do this.
     }
   });
 

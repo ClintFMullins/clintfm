@@ -7,8 +7,8 @@
 
 .sky-sphere-wrapper {
   width: 80%;
-  height: 70%;
-  transform: translateY(20%);
+  height: 100%;
+  transform: translateY(25%) translateX(-10%);
   position: relative;
 }
 
@@ -19,5 +19,9 @@
   bottom: 0;
   left: 0;
   transition: all 200ms linear;
-  box-shadow: 0 0 20px #9ecaed;
+  box-shadow: 0 0 30px #9ecaed;
+}
+
+.sky-sphere-hue {
+  box-shadow: 0 0 80px #e5ff6f;
 }
