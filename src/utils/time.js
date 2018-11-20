@@ -16,7 +16,7 @@ export function getDayNightDetails() {
 /**
  * Runs quickly, good for testing
  */
-export function getChangingDayNightDetails() {
+export function useChangingDayNightDetails() {
   const [hour, setHour] = useState(0);
 
   useEffect(() => {

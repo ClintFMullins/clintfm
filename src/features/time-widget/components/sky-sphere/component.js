@@ -1,8 +1,8 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import './styles.css';
 
 export function SkySphere(props) {
-  const { setRef, width, height } = useSizeOfElement();
+  const { width, height, ref } = useDomDimensions();
 
   const translateX = (props.percentX / 100) * width;
   const translateY = (props.percentY / 100) * height;
@@ -14,41 +14,26 @@ export function SkySphere(props) {
     height: `${size}px`,
     transform: `translateX(${translateX}px) translateY(-${translateY}px)`,
     backgroundColor: props.isDay ? 'yellow' : 'white',
-    display: width ? 'block' : 'none',
   }
 
   return (
     <div className="sky-sphere-center">
-      <div className="sky-sphere-wrapper" ref={setRef}>
+      <div className="sky-sphere-wrapper" ref={ref}>
         <div className={`sky-sphere ${props.sunshine ? 'sky-sphere-hue' : ''}`} style={style} />
       </div>
     </div>
   );
 }
 
-function useSizeOfElement() {
-  let wrapperRef = useRef();
-  let width = useRef();
-  let height = useRef();
-
-  const [_, reRender ] = useState(0);
-
-  const setWrapperRef = (ref) => {
-    wrapperRef.current = ref;
-  }
+function useDomDimensions(initialWidthHeight) {
+  const ref = useRef(null);
+  const [width, setWidth] = useState(initialWidthHeight);
+  const [height, setHeight] = useState(initialWidthHeight);
 
   useLayoutEffect(() => {
-    if (wrapperRef.current) {
-      width.current = wrapperRef.current.clientWidth;
-      height.current = wrapperRef.current.clientHeight;
-    } else {
-      reRender(); // TODO: not have to do this.
-    }
-  });
+    setWidth(ref.current && ref.current.clientWidth);
+    setHeight(ref.current && ref.current.clientHeight);
+  }, [ref.current]);
 
-  return {
-    setRef: setWrapperRef,
-    width: width.current,
-    height: height.current,
-  }
+  return { ref, width, height };
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function renderInterval(intervalMs, valueFunc) {
+export function useRenderInterval(intervalMs, valueFunc) {
   const [value, setValue] = useState(valueFunc());
 
   useEffect(() => {
