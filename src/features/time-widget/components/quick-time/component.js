@@ -6,6 +6,6 @@ export function QuickTime(props) {
   const dayNightDetails = useChangingDayNightDetails();
 
   return (
-    <Landscape {...dayNightDetails} size={props.size} />
+    <Landscape {...dayNightDetails} {...props} />
   )
 }

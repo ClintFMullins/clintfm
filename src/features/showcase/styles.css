@@ -1,0 +1,7 @@
+.showcase {
+  padding: 20px;
+  background-color: rgb(255, 154, 147);
+  border-radius: 20px;
+  border: rgb(255, 123, 114) 1px solid;
+  box-shadow: 5px 0px 20px #888888;
+}

@@ -9,6 +9,6 @@ export function CurrentTime(props) {
   const dayNightDetails = useRenderInterval(TIME_UPDATE_INTERVAL_MS, getDayNightDetails);
 
   return (
-    <Landscape {...dayNightDetails} size={props.size} />
+    <Landscape {...dayNightDetails} {...props} />
   )
 }

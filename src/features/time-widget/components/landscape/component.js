@@ -17,16 +17,20 @@ export function Landscape(props) {
     noonPeakPercent,
     eveningPercent,
     eveningPeakPercent,
-    size,
+    width,
+    height,
+    isRound,
   } = props;
 
-  const pixelSize = `${size}px`;
-  const borderSize = Math.max(1, Math.min(3, size / 50));
+  const widthSize = `${width}px`;
+  const heightSize = `${height}px`;
+  const borderSize = Math.max(1, Math.min(3, heightSize / 50));
 
   const wrapperStyle = {
-    width: pixelSize,
-    height: pixelSize,
+    width: widthSize,
+    height: heightSize,
     border: `solid black ${borderSize}px`,
+    borderRadius: isRound ? '100%' : '0',
   }
 
   return (
@@ -42,14 +46,14 @@ export function Landscape(props) {
         <div className="light-filter time-sky-evening-peak" style={{ opacity: eveningPeakPercent }} />
       </div>
       <div style={{ opacity: (nightPercent + nightPeakPercent) }}>
-        <Stars size={size} />
+        <Stars size={width} />
       </div>
       <SkySphere
         hour={hour}
         percentX={skySpherePercentX}
         percentY={skySpherePercentY}
         isDay={isDay}
-        size={size / 6}
+        size={height / 6}
         sunshine={isDay}
       />
       <div className="time-land-wrapper">

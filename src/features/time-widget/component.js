@@ -5,12 +5,21 @@ import { QuickTime } from './components/quick-time/component';
 export function TimeWidget(props) {
   const [showCurrentTime, setShowCurrentTime] = useState(true);
 
+  const width = props.size ? props.size : props.width;
+  const height = props.size ? props.size : props.height;
+
+  const childProps = {
+    height,
+    width,
+    isRound: props.isRound,
+  }
+
   return (
     <div
       onMouseEnter={() => setShowCurrentTime(false)}
       onMouseLeave={() => setShowCurrentTime(true)}
     >
-      {showCurrentTime ? <CurrentTime size={props.size} /> : <QuickTime size={props.size} />}
+      {showCurrentTime && !props.alwaysRun ? <CurrentTime {...childProps} /> : <QuickTime {...childProps} />}
     </div>
   )
 }
