@@ -13,23 +13,20 @@ export function getDayNightDetails() {
   return calculateDayNightDetails(hour, minute)
 }
 
-/**
- * Runs quickly, good for testing
- */
 export function useChangingDayNightDetails() {
-  const [hour, setHour] = useState(0);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHour((hour + 1) % DAY_SCALE);
-    }, 100);
+      setCurrentTime(new Date(currentTime.getTime() + 10000));
+    }, 0);
 
     return () => {
       clearInterval(interval);
     }
   });
 
-  return calculateDayNightDetails(hour, 0);
+  return calculateDayNightDetails(currentTime.getHours(), currentTime.getMinutes());
 }
 
 export function calculateDayNightDetails(hour, minute) {

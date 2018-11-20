@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import React from 'react';
+import { useDomDimensions } from '../../../../utils/dom';
 import './styles.css';
 
 export function SkySphere(props) {
@@ -23,17 +24,4 @@ export function SkySphere(props) {
       </div>
     </div>
   );
-}
-
-function useDomDimensions(initialWidthHeight) {
-  const ref = useRef(null);
-  const [width, setWidth] = useState(initialWidthHeight);
-  const [height, setHeight] = useState(initialWidthHeight);
-
-  useLayoutEffect(() => {
-    setWidth(ref.current && ref.current.clientWidth);
-    setHeight(ref.current && ref.current.clientHeight);
-  }, [ref.current]);
-
-  return { ref, width, height };
 }
