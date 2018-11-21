@@ -6,30 +6,26 @@ function getRandom(max) {
 }
 
 let starsCache = {};
-function addStars(size) {
-  if (starsCache[size]) {
-    return starsCache[size];
+function addStars(width, height) {
+  const cacheKey = `${width}${height}`;
+
+  if (starsCache[cacheKey]) {
+    return starsCache[cacheKey];
   }
 
   let boxShadowValue = '';
-  boxShadowValue += `${getRandom(size)}px ${getRandom(size)}px white`
-  for (let i = 2; i < size; i++) {
-    boxShadowValue += ` , ${getRandom(size)}px ${getRandom(size)}px white`
+  boxShadowValue += `${getRandom(width)}px ${getRandom(height)}px white`
+  for (let i = 2; i < width; i++) {
+    boxShadowValue += ` , ${getRandom(width)}px ${getRandom(height)}px white`
   }
 
-  starsCache[size] = boxShadowValue;
+  starsCache[cacheKey] = boxShadowValue;
 
   return boxShadowValue;
 }
 
 export function Stars(props) {
-  const [boxShadowValue] = useState(addStars(props.size));
-
-  const style = {
-    boxShadow: boxShadowValue,
-  }
-
   return (
-    <div className="stars" style={style} />
+    <div className="stars" style={{ boxShadow: addStars(props.width * 2, props.height * 2) }} />
   );
 }

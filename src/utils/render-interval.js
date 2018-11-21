@@ -4,12 +4,12 @@ export function useRenderInterval(intervalMs, valueFunc) {
   const [value, setValue] = useState(valueFunc());
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = setTimeout(() => {
       setValue(valueFunc);
     }, intervalMs);
 
     return () => {
-      clearInterval(interval);
+      clearTimeout(interval);
     }
   }, []);
 

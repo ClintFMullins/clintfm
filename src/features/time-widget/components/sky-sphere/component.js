@@ -1,14 +1,12 @@
 import React from 'react';
-import { useDomDimensions } from '../../../../utils/dom';
+import { useWindowSize } from '../../../../utils/dom';
 import './styles.css';
 
 export function SkySphere(props) {
-  const { width, height, ref } = useDomDimensions();
+  const size = props.isDay ? props.size : props.size / 2;
 
-  const translateX = (props.percentX / 100) * width;
-  const translateY = (props.percentY / 100) * height;
-
-  const size = props.isDay ? props.size : props.size / 2; 
+  const translateX = ((props.percentX / 100) * props.width) - (size / 2);
+  const translateY = ((props.percentY / 100) * props.height) - (size / 2);
 
   const style = {
     width: `${size}px`,
@@ -19,9 +17,7 @@ export function SkySphere(props) {
 
   return (
     <div className="sky-sphere-center">
-      <div className="sky-sphere-wrapper" ref={ref}>
-        <div className={`sky-sphere ${props.sunshine ? 'sky-sphere-hue' : ''}`} style={style} />
-      </div>
+      <div className={`sky-sphere ${props.sunshine ? 'sky-sphere-hue' : ''}`} style={style} />
     </div>
   );
 }

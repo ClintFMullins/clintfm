@@ -1,10 +1,12 @@
 .stars {
+  animation: spin 3000s linear infinite;
   width: 1px;
   height: 1px;
   background: transparent;
   position: absolute;
   top: 0;
   opacity: 0.7;
+  transition: opacity 2s linear;
 }
 .stars::after {
   content: " ";
@@ -13,4 +15,10 @@
   width: 1px;
   height: 1px;
   background: transparent;
+}
+
+@keyframes spin {
+  100% {
+    transform:rotate(360deg);
+  }
 }

@@ -5,13 +5,6 @@
   justify-content: center;
 }
 
-.sky-sphere-wrapper {
-  width: 80%;
-  height: 100%;
-  transform: translateY(25%) translateX(-10%);
-  position: relative;
-}
-
 .sky-sphere {
   border-radius: 100%;
   background-color: white;

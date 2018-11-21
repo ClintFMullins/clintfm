@@ -1,7 +1,11 @@
 .showcase {
-  padding: 20px;
-  background-color: rgb(255, 154, 147);
-  border-radius: 20px;
-  border: rgb(255, 123, 114) 1px solid;
+  padding: 5px;
+  border-radius: 100%;
   box-shadow: 5px 0px 20px #888888;
+  opacity: 0.8;
+  transition: opacity 300ms ease-out;
+}
+
+.showcase:hover {
+  opacity: 0.95;
 }

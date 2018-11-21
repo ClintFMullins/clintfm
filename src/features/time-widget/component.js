@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { CurrentTime } from './components/current-time/component';
-import { QuickTime } from './components/quick-time/component';
+import { useRenderInterval } from '../../utils/render-interval';
+import { useChangingDayNightDetails, getDayNightDetails } from '../../utils/time';
+import { Landscape } from './components/landscape/component';
+
+const TIME_UPDATE_INTERVAL_MS = 20 * 1000;
 
 export function TimeWidget(props) {
-  const [showCurrentTime, setShowCurrentTime] = useState(true);
+  const [userIsFocused, setUserIsFocused] = useState(true);
+  const currentTimeDetails = useRenderInterval(TIME_UPDATE_INTERVAL_MS, getDayNightDetails);
+  const showCurrentTime = userIsFocused && !props.alwaysRun;
+  const rotatingDetails = useChangingDayNightDetails(!showCurrentTime);
 
   const width = props.size ? props.size : props.width;
   const height = props.size ? props.size : props.height;
@@ -12,14 +18,15 @@ export function TimeWidget(props) {
     height,
     width,
     isRound: props.isRound,
+    ...(showCurrentTime ? currentTimeDetails : rotatingDetails),
   }
 
   return (
     <div
-      onMouseEnter={() => setShowCurrentTime(false)}
-      onMouseLeave={() => setShowCurrentTime(true)}
+      onMouseEnter={() => setUserIsFocused(false)}
+      onMouseLeave={() => setUserIsFocused(true)}
     >
-      {showCurrentTime && !props.alwaysRun ? <CurrentTime {...childProps} /> : <QuickTime {...childProps} />}
+      <Landscape {...childProps} />
     </div>
   )
 }

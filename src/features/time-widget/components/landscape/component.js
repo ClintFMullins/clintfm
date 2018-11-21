@@ -46,7 +46,7 @@ export function Landscape(props) {
         <div className="light-filter time-sky-evening-peak" style={{ opacity: eveningPeakPercent }} />
       </div>
       <div style={{ opacity: (nightPercent + nightPeakPercent) }}>
-        <Stars size={width} />
+        <Stars width={width} height={height} />
       </div>
       <SkySphere
         hour={hour}
@@ -54,6 +54,8 @@ export function Landscape(props) {
         percentY={skySpherePercentY}
         isDay={isDay}
         size={height / 6}
+        width={width}
+        height={height}
         sunshine={isDay}
       />
       <div className="time-land-wrapper">

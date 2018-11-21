@@ -52,19 +52,19 @@
   background: rgb(0, 48, 0);
 }
 .time-land-morning {
-  background: darkgreen;
+  background: linear-gradient(to bottom, #83c783 6%,#52b152 16%,#008a00 23%,#005700 100%);;
 }
 .time-land-morning-peak {
-  background: darkgreen;
+  background: linear-gradient(to bottom, #83c783 6%,#52b152 16%,#008a00 23%,#005700 100%);;
 }
 .time-land-noon {
-  background: lightgreen;
+  background: linear-gradient(to bottom, #83c783 6%,#52b152 16%,#008a00 23%,#005700 100%);;
 }
 .time-land-noon-peak {
-  background: lightgreen;
+  background: linear-gradient(to bottom, #83c783 6%,#52b152 16%,#008a00 23%,#005700 100%);;
 }
 .time-land-evening {
-  background: darkgreen;
+  background: linear-gradient(to bottom, #83c783 6%,#52b152 16%,#008a00 23%,#005700 100%);;
 }
 .time-land-evening-peak {
   background: rgb(22, 56, 22);
