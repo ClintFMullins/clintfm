@@ -16,9 +16,17 @@ export function getDayNightDetails() {
 export function useChangingDayNightDetails(isActive) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
+  function moveTimeForward() {
+    setCurrentTime(new Date(currentTime.getTime() + 1000000));
+  }
+
   useEffect(() => {
     if (isActive) {
-      setCurrentTime(new Date(currentTime.getTime() + 10000));
+      const interval = setTimeout(moveTimeForward, 250);
+
+      return () => {
+        clearInterval(interval);
+      }
     }
   });
 

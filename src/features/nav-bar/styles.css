@@ -1,0 +1,22 @@
+.nav-bar {
+  width: 100%;
+  border-top: 2px solid black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  background: white;
+  opacity: 0.1;
+  transition: opacity 600ms ease-out;
+}
+
+.nav-bar:hover {
+  opacity: .65;
+}
+
+.nav-bar-placeholder {
+  width: 100%;
+  visibility: hidden;
+}

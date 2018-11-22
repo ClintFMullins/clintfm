@@ -8,17 +8,21 @@ export function Showcase(props) {
     border: `hsl(${props.hue}, 30%, 100%) 1px solid`,
   }
 
-  return (
-    <Link to={props.link}>
+  let content = (
+    <div className="showcase" style={style}>
       <div className="showcase" style={style}>
         <div className="showcase" style={style}>
           <div className="showcase" style={style}>
-            <div className="showcase" style={style}>
-              {props.children}
-            </div>
+            {props.children}
           </div>
         </div>
       </div>
-    </Link>
-  )
+    </div>
+  );
+
+  if (props.link) {
+    content = <Link to={props.link}>{content}</Link>;
+  }
+
+  return content;
 }

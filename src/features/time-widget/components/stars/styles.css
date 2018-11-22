@@ -1,5 +1,5 @@
 .stars {
-  animation: spin 3000s linear infinite;
+  animation: moveUpDown 100s linear infinite;
   width: 1px;
   height: 1px;
   background: transparent;
@@ -20,5 +20,14 @@
 @keyframes spin {
   100% {
     transform:rotate(360deg);
+  }
+}
+
+@keyframes moveUpDown {
+  0%, 100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 100px;
   }
 }

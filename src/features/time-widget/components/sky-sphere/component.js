@@ -1,5 +1,4 @@
 import React from 'react';
-import { useWindowSize } from '../../../../utils/dom';
 import './styles.css';
 
 export function SkySphere(props) {

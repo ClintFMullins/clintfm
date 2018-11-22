@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  transform: translateY(8%);
 }
 
 .sky-sphere {
@@ -12,6 +13,7 @@
   bottom: 0;
   left: 0;
   box-shadow: 0 0 30px #9ecaed;
+  transition: transform 300ms linear;
 }
 
 .sky-sphere-hue {

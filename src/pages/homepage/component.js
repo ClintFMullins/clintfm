@@ -1,25 +1,17 @@
 import React from 'react';
-import { TimeWidget } from '../../features/time-widget/component';
-import { Showcase } from '../../features/showcase/component';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 export function Homepage() {
   return (
-    <div style={{ background: 'eggshell', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-      <div style={{ marginBottom: '20px' }}>
-        <Showcase link={`/projects/current-time`} hue={3}>
-          
-        </Showcase>
-      </div>
-      <div style={{ marginBottom: '20px' }}>
-        <Showcase link={`/projects/current-time`} hue={3}>
-          <TimeWidget size={150} isRound={true} />
-        </Showcase>
-      </div>
-      <div style={{ marginBottom: '20px' }}>
-        <Showcase link={`/projects/current-time`} hue={3}>
-          
-        </Showcase>
+    <div className="homepage">
+      <div className="homepage-choice-wrapper">
+        <Link to="/" className="homepage-big homepage-big-left">
+          work
+        </Link>
+        <Link className="homepage-big homepage-big-right" to="/play">
+          play
+        </Link>;
       </div>
     </div>
   );
