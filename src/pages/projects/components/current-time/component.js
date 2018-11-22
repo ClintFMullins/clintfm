@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TimeWidget } from '../../../../features/time-widget/component';
 import { useWindowSize } from '../../../../utils/dom';
 

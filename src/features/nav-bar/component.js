@@ -1,4 +1,4 @@
-import React, { useState, useMutationEffect } from 'react';
+import React from 'react';
 import { Profile } from '../profile/component';
 import './styles.css';
 

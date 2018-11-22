@@ -7,6 +7,7 @@
   background-color: black;
   border-radius: 6px;
   transition: background-color 2s ease-in;
+  border: solid black 2px;
 }
 
 .profile-loaded {

@@ -13,7 +13,9 @@ export function Showcase(props) {
       <div className="showcase" style={style}>
         <div className="showcase" style={style}>
           <div className="showcase" style={style}>
-            {props.children}
+            <div style={{ width: '150px', height: '150px' }}>
+              {props.children}
+            </div>
           </div>
         </div>
       </div>
@@ -24,5 +26,13 @@ export function Showcase(props) {
     content = <Link to={props.link}>{content}</Link>;
   }
 
-  return content;
+  return (
+    <div className="showcase-organizer">
+      {content}
+      <div className="showcase-metadata">
+        <div className="showcase-title">{props.title}</div>
+        <div>{props.description}</div>
+      </div>
+    </div>
+  );
 }
