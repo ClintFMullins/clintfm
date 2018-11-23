@@ -6,12 +6,12 @@
   align-items: center;
   font-family: "Trebuchet MS";
   font-size: 80px;
-  background: black;
+  background: radial-gradient(ellipse at center, rgba(30,87,153,0.1) 0%,rgba(125,185,232,0) 100%); ;
 }
 
 .homepage a {
   text-decoration: none;
-  color: inherit;
+  color: #626567;
 }
 
 .homepage-choice-wrapper {
@@ -21,7 +21,6 @@
   width: 80%;
   max-width: 850px;
   height: 50%;
-  border-radius: 100%;
 }
 
 .homepage-big {
@@ -30,22 +29,65 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform linear 300ms;
+  transition: all linear 50ms;
   cursor: pointer;
+  border-top: solid #B3B6B7 1px;
+  border-bottom: solid #B3B6B7 1px;
+  color: #7B7D7D;
 }
 
 .homepage-big:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  border: rgb(255, 235, 119) solid 2px;
+  border-radius: 8px;
+  box-shadow: rgba(235, 213, 90, 0.3) 0px 0px 90px 12px;
 }
 
 .homepage-big-left {
-  background: hsl(250, 41%, 90%);
-  border-top-left-radius: 100%;
-  border-bottom-left-radius: 100%;
+  background: #FDFEFE;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-left: solid #B3B6B7 1px;
 }
 
 .homepage-big-right {
-  background: hsl(100, 41%, 90%);
-  border-top-right-radius: 100%;
-  border-bottom-right-radius: 100%;
+  background: #F7F9F9;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-right: solid #B3B6B7 1px;
+}
+
+@media only screen and (max-width: 600px) {
+  .homepage {
+    font-size: 40px;
+  }
+
+  .homepage-choice-wrapper {
+    flex-direction: column;
+  }
+
+  .homepage-big {
+    width: 80%;
+  }
+
+  .homepage-big {
+    border-left: solid #B3B6B7 1px;
+    border-right: solid #B3B6B7 1px;
+  }
+
+  .homepage-big-left {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom: none;
+    border-top: solid #B3B6B7 1px;
+  }
+  
+  .homepage-big-right {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 0px;
+    border-top: none;
+    border-bottom: solid #B3B6B7 1px;
+  }
 }

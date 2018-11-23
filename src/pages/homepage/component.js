@@ -11,7 +11,7 @@ export function Homepage() {
         </Link>
         <Link className="homepage-big homepage-big-right" to="/play">
           play
-        </Link>;
+        </Link>
       </div>
     </div>
   );
