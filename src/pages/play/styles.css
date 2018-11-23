@@ -1,13 +1,24 @@
 .play {
   background: eggshell;
-  height: 100vh;
+  padding: 5%;
+  text-align: center;
+}
+
+.play-projects {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-  margin-bottom: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 10%;
 }
 
 .showcase-wrapper {
-  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .play-projects {
+    flex-direction: column;
+  }
 }
