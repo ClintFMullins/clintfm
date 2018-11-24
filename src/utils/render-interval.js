@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 
+// TODO: Why does this set up the interval twice?
 export function useRenderInterval(intervalMs, valueFunc) {
   const [value, setValue] = useState(valueFunc());
 
   useEffect(() => {
-    const interval = setTimeout(() => {
-      setValue(valueFunc);
+    const interval = setInterval(() => {
+      setValue(valueFunc());
     }, intervalMs);
 
     return () => {
-      clearTimeout(interval);
+      clearInterval(interval);
     }
   }, []);
 
