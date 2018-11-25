@@ -11,4 +11,10 @@
   height: 5px;
   background-color: #B3B6B7;
   margin-bottom: 8px;
+  opacity: 0.5;
+  transition: opacity ease-out 10ms;
+}
+
+.rhyme-line:hover {
+  opacity: 1;
 }

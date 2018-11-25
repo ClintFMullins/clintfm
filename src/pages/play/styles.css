@@ -8,13 +8,18 @@
 .play-projects {
   display: flex;
   justify-content: space-around;
-  max-width: 900px;
+  max-width: 1120px;
   margin: 0 auto;
   margin-top: 10%;
 }
 
 .showcase-wrapper {
   margin-right: 20px;
+}
+
+.preview-wrapper {
+  border-radius: 100%;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 600px) {

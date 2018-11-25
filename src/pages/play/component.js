@@ -3,6 +3,7 @@ import { TimeWidget } from '../../features/time-widget/component';
 import { PreviewCTA } from '../projects/components/cta/preview-component';
 import { PreviewRhymes } from '../projects/components/rhymes/preview-component';
 import { Showcase } from '../../features/showcase/component';
+import { Grid } from '../../features/grid/component';
 import './styles.css';
 
 export function Play() {
@@ -40,6 +41,24 @@ export function Play() {
             hue={124}
           >
             <PreviewRhymes />
+          </Showcase>
+        </div>
+
+        <div className="showcase-wrapper">
+          <Showcase
+            title="Lava"
+            description="Move your mouse with the color"
+            link={`/projects/lava`}
+            hue={60}
+          >
+            <div className="preview-wrapper">
+              <Grid
+                width={150}
+                height={150}
+                velocity={5}
+                squareSize={10}
+              />
+            </div>
           </Showcase>
         </div>
       </div>
