@@ -7,10 +7,12 @@
 
 .play-projects {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-wrap: wrap;
   max-width: 1120px;
   margin: 0 auto;
   margin-top: 10%;
+  width: 80%;
 }
 
 .showcase-wrapper {
@@ -20,6 +22,11 @@
 .preview-wrapper {
   border-radius: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
 }
 
 @media only screen and (max-width: 600px) {

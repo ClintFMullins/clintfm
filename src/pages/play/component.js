@@ -4,6 +4,8 @@ import { PreviewCTA } from '../projects/components/cta/preview-component';
 import { PreviewRhymes } from '../projects/components/rhymes/preview-component';
 import { Showcase } from '../../features/showcase/component';
 import { Grid } from '../../features/grid/component';
+import { Creature } from '../../features/creature/component';
+import { generateCreatureData } from '../../features/creature/utils/creature-generation';
 import './styles.css';
 
 export function Play() {
@@ -57,6 +59,22 @@ export function Play() {
                 height={150}
                 velocity={2}
                 squareSize={15}
+              />
+            </div>
+          </Showcase>
+        </div>
+
+        <div className="showcase-wrapper">
+          <Showcase
+            title="Creature"
+            description="Click for creatures"
+            link={`/play/creature`}
+            hue={75}
+          >
+            <div className="preview-wrapper">
+              <Creature
+                size={50}
+                creatureData={generateCreatureData()}
               />
             </div>
           </Showcase>
