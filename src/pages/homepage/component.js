@@ -6,7 +6,7 @@ export function Homepage() {
   return (
     <div className="homepage">
       <div className="homepage-choice-wrapper">
-        <Link to="/" className="homepage-big homepage-big-left">
+        <Link className="homepage-big homepage-big-left" to="/work">
           work
         </Link>
         <Link className="homepage-big homepage-big-right" to="/play">

@@ -15,7 +15,7 @@ export function Play() {
           <Showcase
             title="Time++"
             description="Starting now, and so on."
-            link={`/projects/current-time`}
+            link={`/play/current-time`}
             hue={3}
           >
             <TimeWidget size={150} isRound={true} />
@@ -26,7 +26,7 @@ export function Play() {
           <Showcase
             title="CTA"
             description="We want you to click this one."
-            link={`/projects/cta`}
+            link={`/play/cta`}
             hue={215}
           >
             <PreviewCTA />
@@ -37,7 +37,7 @@ export function Play() {
           <Showcase
             title="Rhymes"
             description="We've got hot bars for ya"
-            link={`/projects/rhymes`}
+            link={`/play/rhymes`}
             hue={124}
           >
             <PreviewRhymes />
@@ -48,15 +48,15 @@ export function Play() {
           <Showcase
             title="Lava"
             description="Move your mouse with the color"
-            link={`/projects/lava`}
+            link={`/play/lava`}
             hue={60}
           >
             <div className="preview-wrapper">
               <Grid
                 width={150}
                 height={150}
-                velocity={5}
-                squareSize={10}
+                velocity={2}
+                squareSize={15}
               />
             </div>
           </Showcase>

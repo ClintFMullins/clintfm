@@ -1,0 +1,15 @@
+.creature-body {
+  background: blue;
+}
+
+.creature-eye-left {
+  background-color: purple;
+}
+
+.creature-eye-right {
+  background-color: green;
+}
+
+.creature-mouth {
+  background-color: red;
+}

@@ -1,0 +1,21 @@
+.text-and-photo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.text-and-photo {
+  text-align: left;
+  max-width: 800px;
+  border-radius: 6px;
+  border: solid #626567 2px;
+  display: flex;
+}
+
+.photo-wrapper {
+  width: 30vw;
+  background-color: grey;
+}
+
+.text-wrapper {
+  padding: 20px;
+}
