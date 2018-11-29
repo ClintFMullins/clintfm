@@ -39,6 +39,9 @@ export function Grid(props) {
 
   function onCanvasHover(event) {
     const { columnIndex, rowIndex } = getColumnRow(event);
+    if (!grid.current || !grid.current[columnIndex] || !grid.current[columnIndex][rowIndex]) {
+      return;
+    }
 
     grid.current[columnIndex][rowIndex] = color;
   }

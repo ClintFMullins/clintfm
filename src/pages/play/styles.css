@@ -7,7 +7,7 @@
 
 .play-projects {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   max-width: 1120px;
   margin: 0 auto;
@@ -16,7 +16,7 @@
 }
 
 .showcase-wrapper {
-  margin-right: 20px;
+  margin: 0 30px;
 }
 
 .preview-wrapper {

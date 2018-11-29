@@ -16,6 +16,7 @@ export function App() {
         <Route exact path='/play' component={Play}/>
         <Route path='/play/' component={Projects}/>
       </Switch>
+      <NavBar />
     </>
   );
 }

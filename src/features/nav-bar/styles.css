@@ -1,21 +1,56 @@
 .nav-bar {
-  width: 100%;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
+  top: 0;
+  right: 0;
   z-index: 100;
-  opacity: 0.1;
-  transition: opacity 600ms ease-out;
-  padding-bottom: 2%;
+  width: 100px;
+  text-align: right;
+  margin: 10px;
+  height: 43px;
+  overflow: hidden;
+  color: #626567;
 }
 
 .nav-bar:hover {
-  opacity: .65;
+  height: auto;
 }
 
-.nav-bar-placeholder {
-  width: 100%;
-  visibility: hidden;
+.nav-bar a {
+  color: inherit;
+  text-decoration: none;
 }
+
+.profile {
+  font-family: 'Pacifico', cursive;
+  text-decoration: underline;
+  background-color: white;
+  font-size: 21px;
+  color:hsl(204, 2%, 29%);
+}
+
+.nav-link-choice {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: rgba(0,0,0,0);
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: solid 1px rgba(0,0,0,0);
+  transition: background-color ease-out 400ms;
+}
+
+.nav-link-choice-sub {
+  transform: translateX(100px);
+  transition: transform linear 150ms;
+}
+
+.nav-bar:hover .nav-link-choice {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.nav-bar:hover .nav-link-choice-sub {
+  transform: translateX(0);
+}
+
+.nav-link-choice:hover {
+  border: solid 1px rgba(0,0,0,0.2);
+} 

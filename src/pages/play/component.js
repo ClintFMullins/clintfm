@@ -15,8 +15,8 @@ export function Play() {
       <div className="play-projects">
         <div className="showcase-wrapper">
           <Showcase
-            title="Time++"
-            description="Starting now, and so on."
+            title="Now"
+            description="See the future"
             link={`/play/current-time`}
             hue={3}
           >
@@ -27,7 +27,7 @@ export function Play() {
         <div className="showcase-wrapper">
           <Showcase
             title="CTA"
-            description="We want you to click this one."
+            description="Pls click it"
             link={`/play/cta`}
             hue={215}
           >
@@ -38,7 +38,7 @@ export function Play() {
         <div className="showcase-wrapper">
           <Showcase
             title="Rhymes"
-            description="We've got hot bars for ya"
+            description="Where hot bars are born"
             link={`/play/rhymes`}
             hue={124}
           >
@@ -49,7 +49,7 @@ export function Play() {
         <div className="showcase-wrapper">
           <Showcase
             title="Lava"
-            description="Move your mouse with the color"
+            description="Blaze a trail"
             link={`/play/lava`}
             hue={60}
           >
@@ -67,7 +67,7 @@ export function Play() {
         <div className="showcase-wrapper">
           <Showcase
             title="Creature"
-            description="Click for creatures"
+            description="Find your favorite"
             link={`/play/creature`}
             hue={75}
           >
