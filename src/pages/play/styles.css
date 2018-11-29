@@ -16,7 +16,7 @@
 }
 
 .showcase-wrapper {
-  margin: 0 30px;
+  margin: 0 60px 60px 60px;
 }
 
 .preview-wrapper {
@@ -27,14 +27,4 @@
   align-items: center;
   width: 150px;
   height: 150px;
-}
-
-@media only screen and (max-width: 600px) {
-  .play-projects {
-    flex-direction: column;
-  }
-
-  .showcase-wrapper {
-    margin-right: 0;
-  }
 }
