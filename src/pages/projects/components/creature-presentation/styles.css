@@ -17,6 +17,7 @@
   padding: 25px;
   border-radius: 8px;
   border: solid hsl(0, 100%, 50%) 3px;
+  box-shadow: 0px 0px 100px black;
 }
 
 .creature-machine-image {

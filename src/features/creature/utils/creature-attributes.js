@@ -40,24 +40,24 @@ export function getCreatureAttributes(creatureData) {
 
 // If I ever make a battle system,
 // this is not good enough. 
-//0 - red        - Fire
-// 60 - yellow    - Sun
-// 120 - green    - Forest
-// 180 - cyan     - Wind
+// 0 -   red        - Fire
+// 60 -  yellow     - Sun
+// 120 - green      - Forest
+// 180 - cyan       - Wind
 // 240 - deep blue  - Water
-// 300 purple      - Spirit
+// 300 - purple     - Spirit
 function getClosestType(hue) {
   if (hue >= 30 && hue < 90) {
-    return 'Sun';
+    return 'sun';
   } else if (hue >= 90 && hue < 150) {
-    return 'Forest';
+    return 'forest';
   } else if (hue >= 150 && hue < 210) {
-    return 'Wind';
+    return 'wind';
   } else if (hue >= 210 && hue < 270) {
-    return 'Water';
+    return 'water';
   } else if (hue >= 270 && hue < 330) {
-    return 'Spirit';
+    return 'spirit';
   } else {
-    return 'Fire';
+    return 'fire';
   }
 }
