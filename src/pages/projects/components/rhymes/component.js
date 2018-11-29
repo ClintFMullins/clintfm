@@ -18,6 +18,10 @@ export function Rhymes() {
   const { ref, refFocus } = useFocusOnLoad();
 
   function submitTyped(word) {
+    if (word.trim() === '') {
+      return;
+    }
+
     queueWord(word);
     setTyped('');
   }
@@ -26,14 +30,14 @@ export function Rhymes() {
     const value = event.currentTarget.value;
 
     if (value.includes(' ')) {
-      submitTyped(event.currentTarget.value);
+      submitTyped(value);
     } else {
-      setTyped(event.currentTarget.value);
+      setTyped(value);
     }
   }
 
   function onInputKeyDown(event) {
-    if (event.keyCode === 13 && typed !== '') {
+    if (event.keyCode === 13) {
       submitTyped(typed);
     }
   }
@@ -46,21 +50,18 @@ export function Rhymes() {
   function queueWord(word) {
     setWords(prevState => [...prevState, word]);
 
-    setWordRhymes((prevWordRhymes) => (
-      { ...prevWordRhymes, [word]: ['hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey', 'hey'] }
-    ));
+    fetch(`https://api.datamuse.com/words?rel_rhy=${word}`)
+      .then(response => {
+        response.json().then((responseWords) => {
+          const subsetOfRhymes = responseWords.map((resp) => resp.word).slice(0, 20);
 
-    // fetch(`https://api.datamuse.com/words?rel_rhy=${word}`)
-    //   .then(response => {
-    //     response.json().then((responseWords) => {
-    //       const subsetOfRhymes = responseWords.map((resp) => resp.word).slice(0, 20);
+          setWordRhymes((prevWordRhymes) => (
+            { ...prevWordRhymes, [word]: subsetOfRhymes }
+          ));
 
-    //       setWordRhymes((prevWordRhymes) => (
-    //         { ...prevWordRhymes, [word]: subsetOfRhymes }
-    //       ));
-    //     });
-    //   }).catch((error) => console.error(error));
-    smoothScrollToBottom();
+          smoothScrollToBottom();
+        });
+      }).catch((error) => console.error(error));
   }
 
   useEffect(() => {
@@ -100,7 +101,7 @@ export function Rhymes() {
         <div className="rap-title">My Sweet Rhymes</div>
         {renderBackground(15, refFocus)}
         <div>{words.map(renderWordRhyme)}</div>
-        <div className="rhyme-word-wrapper-shared rhyme-word-wrapper">
+        <div className="rhyme-word-wrapper-shared rhyme-word-wrapper rhyme-word-input-wrapper">
           <input
             ref={ref}
             className="rhyme-word rhyme-word-typing"

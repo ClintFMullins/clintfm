@@ -33,6 +33,7 @@
   font-size: 17px;
   text-decoration: underline;
   font-family: cursive;
+  color: hsl(204, 2%, 26%);
 }
 
 .rhyme-word-wrapper-top {
@@ -51,6 +52,9 @@
   z-index: 2;
   font-size: 25px;
   padding-left: 60px;
+}
+
+.rhyme-word-input-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
