@@ -15,8 +15,8 @@ const colorVeryVeryDark = (hue) => colorTemplate(hue, 10);
 export function Creature(props) {
   const { body, mouth, eyes, misc } = props.creatureData;
 
-  const adustedBodyWidth = props.size * body.width;
-  const adustedBodyHeight = props.size * body.height;
+  const adustedBodyWidth = props.size * (body.width / 100);
+  const adustedBodyHeight = props.size * (body.height / 100);
 
   const bodyWrapperStyle = {
     width: props.size,

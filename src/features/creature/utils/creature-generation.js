@@ -4,19 +4,39 @@ const PERCENT_MAX = 99;
 const PERCENT_MIN = 1;
 
 const MOUTH_MIN = 30;
-const MOUTH_BORDER_MAX = 50;
-const MOUTH_BORDER_MIN = 5;
+export const MOUTH_BORDER_MAX = 50;
+export const MOUTH_BORDER_MIN = 5;
 
 const MIN_EYE_RANGE_SIZE = 10;
 
 const PUPIL_MIN = 10;
 
-export function generateCreatureData() {
-  const bodyRadius = randomInRange(0, 5);
-  const bodyWidth = randomInRange(0.5, 1);
-  const bodyHeight = randomInRange(0.5, 1);
+export const MOUTH_SIDE_SIZE_VALUES = {
+  min: 5,
+  max: 70,
+}
 
-  const [mouthX, mouthSizeX] = getRandomInsideBounds(PERCENT_MIN, PERCENT_MAX, { minSize: 5 })
+export const BODY_SIDE_SIZE_VALUES = {
+  min: 50,
+  max: 100,
+}
+
+export const BODY_RADIUS_VALUES = {
+  min: 0,
+  max: 5,
+}
+
+export const EYE_SIZE_VALUES = {
+  min: 10,
+  max: (PERCENT_MAX - MOUTH_SIDE_SIZE_VALUES.min) / 2,
+}
+
+export function generateCreatureData() {
+  const bodyRadius = randomInRange(BODY_RADIUS_VALUES.min, BODY_RADIUS_VALUES.max);
+  const bodyWidth = randomInRange(BODY_SIDE_SIZE_VALUES.min, BODY_SIDE_SIZE_VALUES.max);
+  const bodyHeight = randomInRange(BODY_SIDE_SIZE_VALUES.min, BODY_SIDE_SIZE_VALUES.max);
+
+  const [mouthX, mouthSizeX] = getRandomInsideBounds(MOUTH_MIN, PERCENT_MAX, { minSize: 5 })
   const [mouthY, mouthSizeY] = getRandomInsideBounds(MOUTH_MIN, PERCENT_MAX, { minSize: 5 })
 
   const bothEyesXRange = randomInRange(MIN_EYE_RANGE_SIZE, PERCENT_MAX);
