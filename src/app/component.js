@@ -4,8 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import { Projects } from '../pages/projects/component';
 import { Play } from '../pages/play/component';
 import { Work } from '../pages/work/component';
-import { NavBar } from '../features/nav-bar/component';
 import './style.css';
+import { Choice } from '../features/choice/component';
 
 export function App() {
   return (
@@ -16,7 +16,7 @@ export function App() {
         <Route exact path='/play' component={Play}/>
         <Route path='/play/' component={Projects}/>
       </Switch>
-      <NavBar />
+      <Choice />
     </>
   );
 }

@@ -4,23 +4,25 @@ import { PreviewCTA } from '../projects/components/cta/preview-component';
 import { PreviewRhymes } from '../projects/components/rhymes/preview-component';
 import { Showcase } from '../../features/showcase/component';
 import { Grid } from '../../features/grid/component';
-import { Creature } from '../../features/creature/component';
 import { randomInRange } from '../../features/creature/utils/random';
-import { generateCreatureData } from '../../features/creature/utils/creature-generation';
 import './styles.css';
+import { CreaturePreview } from '../../features/creature/preview-component';
 
 const SHOWCASE_DATA = [
   {
     link: `/play/current-time`,
     preview: <TimeWidget size={150} isRound={true} />,
+    title: 'now',
   },
   {
     link: `/play/cta`,
     preview: <PreviewCTA />,
+    title: 'click',
   },
   {
     link: `/play/rhymes`,
     preview: <PreviewRhymes />,
+    title: 'rhymes',
   },
   {
     link: `/play/lava`,
@@ -34,31 +36,30 @@ const SHOWCASE_DATA = [
         />
       </div>
     ),
+    title: 'lava',
   },
   {
     link: `/play/creature`,
     preview: (
       <div className="preview-wrapper">
-        <Creature
-          size={50}
-          creatureData={generateCreatureData()}
-        />
+        <CreaturePreview />
       </div>
     ),
+    title: 'creatures',
   },
 ];
 
 export function Play() {
   return (
     <div className="play">
-      <h1>Play</h1>
       <div className="play-projects">
         {SHOWCASE_DATA.map((data) => {
           return (
-            <div className="showcase-wrapper">
+            <div key={data.title} className="showcase-wrapper">
               <Showcase
                 link={data.link}
                 hue={randomInRange(0, 360)}
+                title={data.title}
               >
                 {data.preview}
               </Showcase>

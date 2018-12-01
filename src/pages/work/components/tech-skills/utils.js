@@ -16,11 +16,11 @@ function simpleHandlePlural(str, num) {
 
 export const TECH_SKILLS = {
   'Javascript': {
-    timeSpent: Date.now() - getDateFromYearMonth(2012, 6),
+    timeSpent: Date.now() - getDateFromYearMonth(2011, 6),
     isUsingCurrently: true,
   },
   'React': {
-    timeSpent: Date.now() - getDateFromYearMonth(2015, 6),
+    timeSpent: Date.now() - getDateFromYearMonth(2014, 6),
     isUsingCurrently: true,
   },
   'Redux': {
@@ -69,12 +69,17 @@ export const TECH_SKILLS = {
   },
 };
 
-// TODO: does not work....
 export const SORTED_TECH_SKILLS_KEYS = Object.keys(TECH_SKILLS).sort((keyA, keyB) => {
   const skillA = TECH_SKILLS[keyA];
   const skillB = TECH_SKILLS[keyB];
 
-  return skillA.timeSpent > skillB.timeSpent;
+  if (skillA.isUsingCurrently && !skillB.isUsingCurrently) {
+    return -1;
+  } else if (!skillA.isUsingCurrently && skillB.isUsingCurrently) {
+    return 1;
+  }
+
+  return skillB.timeSpent - skillA.timeSpent;
 });
 
 export function getWrittenTime(millis) {

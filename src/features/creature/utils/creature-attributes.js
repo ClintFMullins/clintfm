@@ -1,6 +1,3 @@
-import { randomInRange } from "./random";
-
-
 // This needs to be completely redone to make sense.
 export function getCreatureAttributes(creatureData) {
   const { body, mouth, eyes, misc } = creatureData;

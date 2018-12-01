@@ -29,6 +29,7 @@ export function Showcase(props) {
   return (
     <div className="showcase-organizer">
       {content}
+      <div className="showcase-title">{props.title}</div>
     </div>
   );
 }

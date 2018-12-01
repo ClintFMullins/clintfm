@@ -11,7 +11,7 @@ function smoothScrollToBottom() {
 }
 
 export function Rhymes() {
-  const { triggerRecording, recordedWords, isRecording } = useVoiceRecording();
+  const { triggerRecording, recordedWords } = useVoiceRecording();
   const [words, setWords] = useState([]);
   const [wordRhymes, setWordRhymes] = useState([]);
   const [typed, setTyped] = useState('');
