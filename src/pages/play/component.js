@@ -5,79 +5,81 @@ import { PreviewRhymes } from '../projects/components/rhymes/preview-component';
 import { Showcase } from '../../features/showcase/component';
 import { Grid } from '../../features/grid/component';
 import { Creature } from '../../features/creature/component';
+import { randomInRange } from '../../features/creature/utils/random';
 import { generateCreatureData } from '../../features/creature/utils/creature-generation';
 import './styles.css';
+
+const SHOWCASE_DATA = [
+  {
+    link: `/play/current-time`,
+    preview: <TimeWidget size={150} isRound={true} />,
+  },
+  {
+    link: `/play/cta`,
+    preview: <PreviewCTA />,
+  },
+  {
+    link: `/play/rhymes`,
+    preview: <PreviewRhymes />,
+  },
+  {
+    link: `/play/lava`,
+    preview: (
+      <div className="preview-wrapper">
+        <Grid
+          width={150}
+          height={150}
+          velocity={2}
+          squareSize={15}
+        />
+      </div>
+    ),
+  },
+  {
+    link: `/play/creature`,
+    preview: (
+      <div className="preview-wrapper">
+        <Creature
+          size={50}
+          creatureData={generateCreatureData()}
+        />
+      </div>
+    ),
+  },
+];
 
 export function Play() {
   return (
     <div className="play">
       <h1>Play</h1>
       <div className="play-projects">
-        <div className="showcase-wrapper">
-          <Showcase
-            title="Now"
-            description="See the future"
-            link={`/play/current-time`}
-            hue={3}
-          >
-            <TimeWidget size={150} isRound={true} />
-          </Showcase>
-        </div>
-
-        <div className="showcase-wrapper">
-          <Showcase
-            title="CTA"
-            description="Pls click it"
-            link={`/play/cta`}
-            hue={215}
-          >
-            <PreviewCTA />
-          </Showcase>
-        </div>
-
-        <div className="showcase-wrapper">
-          <Showcase
-            title="Rhymes"
-            description="Where hot bars are born"
-            link={`/play/rhymes`}
-            hue={124}
-          >
-            <PreviewRhymes />
-          </Showcase>
-        </div>
-
-        <div className="showcase-wrapper">
-          <Showcase
-            title="Lava"
-            description="Blaze a trail"
-            link={`/play/lava`}
-            hue={60}
-          >
-            <div className="preview-wrapper">
-              <Grid
-                width={150}
-                height={150}
-                velocity={2}
-                squareSize={15}
-              />
+        {SHOWCASE_DATA.map((data) => {
+          return (
+            <div className="showcase-wrapper">
+              <Showcase
+                link={data.link}
+                hue={randomInRange(0, 360)}
+              >
+                {data.preview}
+              </Showcase>
             </div>
-          </Showcase>
-        </div>
+          )
+        })}
+        <ProjectUnderConstruction />
+      </div>
+    </div>
+  );
+}
 
-        <div className="showcase-wrapper">
-          <Showcase
-            title="Creature"
-            description="Find your favorite"
-            link={`/play/creature`}
-            hue={75}
-          >
-            <div className="preview-wrapper">
-              <Creature
-                size={50}
-                creatureData={generateCreatureData()}
-              />
+export function ProjectUnderConstruction() {
+  return (
+    <div className="showcase-wrapper">
+      <div className="not-real-project">
+        <div className="not-real-project">
+          <div className="not-real-project">
+            <div className="not-real-project-inner">
             </div>
-          </Showcase>
+          </div>
         </div>
       </div>
     </div>

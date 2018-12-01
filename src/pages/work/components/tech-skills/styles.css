@@ -1,0 +1,28 @@
+.tech-skills-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.skill-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 0 50px rgba(240, 239, 233, 0.5);
+  margin-bottom: 4px;
+  border-radius: 3px;
+}
+
+.skill-container-inactive {
+  opacity: 0.4;
+}
+
+.skill-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.skill-time {
+  font-size: 15px;
+}

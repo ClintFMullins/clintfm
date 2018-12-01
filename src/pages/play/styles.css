@@ -7,7 +7,7 @@
 
 .play-projects {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   max-width: 1120px;
   margin: 0 auto;
@@ -27,4 +27,18 @@
   align-items: center;
   width: 150px;
   height: 150px;
+}
+
+.not-real-project {
+  cursor: not-allowed;
+  padding: 5px;
+  border-radius: 100%;
+  border: 1px dotted rgba(0,0,0, 0.4);
+}
+
+.not-real-project-inner {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  border: 1px dotted rgba(0,0,0, 0.4);
 }
