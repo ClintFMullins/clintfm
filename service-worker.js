@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/clintfm/precache-manifest.3ecc0bba7f2e6ff4036c76fafc3d5baa.js"
+  "/clintfm/precache-manifest.0fede0b35f81dc4fe743a626fd310cec.js"
 );
 
 workbox.clientsClaim();
