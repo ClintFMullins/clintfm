@@ -49,3 +49,10 @@
   border-bottom-right-radius: 3px;
   border-right: solid #B3B6B7 1px;
 }
+
+.profile {
+  font-family: 'Pacifico', cursive;
+  background-color: white;
+  font-size: 21px;
+  color:hsl(204, 2%, 29%);
+}

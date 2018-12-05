@@ -24,7 +24,6 @@ function CreatureShown(props) {
 }
 
 function MatingCreature(props) {
-  console.log(props)
   return (
     <div key={props.index} className={`mating-creature-wrapper ${props.index > 1 ? 'hide-on-mobile' : ''}`} onClick={props.onCreatureClick}>
       <Creature size={130} creatureData={props.data}/>
@@ -58,7 +57,7 @@ export function Mating() {
       const newParent = getCreatureData(generateCreatureData());
       const otherParent = index === 0 ? parent2 : parent1;
 
-      setCreatureState(getCreatureData(generateCreatureData()));
+      setCreatureState(newParent);
 
       childrenCreatureData.forEach((childrenCreatureData) => {
         const [_, setChildCreatureState] = childrenCreatureData;
