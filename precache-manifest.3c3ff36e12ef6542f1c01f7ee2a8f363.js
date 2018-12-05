@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/clintfm/static/js/runtime~main.ad80a594.js"
   },
   {
-    "revision": "d928e4e0d5e989e912ae",
-    "url": "/clintfm/static/js/main.d928e4e0.chunk.js"
+    "revision": "2e62395b7a118c3759d3",
+    "url": "/clintfm/static/js/main.2e62395b.chunk.js"
   },
   {
     "revision": "7cd7fd30a188f75b2cd7",
     "url": "/clintfm/static/js/1.7cd7fd30.chunk.js"
   },
   {
-    "revision": "d928e4e0d5e989e912ae",
+    "revision": "2e62395b7a118c3759d3",
     "url": "/clintfm/static/css/main.29ec6f60.chunk.css"
   },
   {
-    "revision": "631362e66158e09cdbaf59b6d7fa84e2",
+    "revision": "42403fbed1c547a13583b0e8c98f09d4",
     "url": "/clintfm/index.html"
   }
 ];
