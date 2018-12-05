@@ -4,7 +4,7 @@ import { CurrentTime } from './components/current-time/component';
 import { CTA } from './components/cta/component';
 import { Rhymes } from './components/rhymes/component';
 import { Lavalamp } from './components/lavalamp/component';
-import { CreaturePresentation } from './components/creature-presentation/component';
+import { Mating } from './components/mating/component';
 
 export function Projects() {
   return (
@@ -13,7 +13,7 @@ export function Projects() {
       <Route exact path='/play/cta' component={CTA}/>
       <Route exact path='/play/rhymes' component={Rhymes}/>
       <Route exact path='/play/lava' component={Lavalamp}/>
-      <Route exact path='/play/creature' component={CreaturePresentation}/>
+      <Route exact path='/play/creatures' component={Mating}/>
     </Switch>
   );
 }

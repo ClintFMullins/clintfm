@@ -111,8 +111,8 @@ export function Rhymes() {
             placeholder="..."
           />
           <span>
-            <span class="trigger-record" onClick={triggerRecording}>record</span> / {' '}
-            <span class="trigger-reset" onClick={resetRhymes}>clear</span>
+            <span className="trigger-record" onClick={triggerRecording}>record</span> / {' '}
+            <span className="trigger-reset" onClick={resetRhymes}>clear</span>
           </span>
         </div>
       </div>

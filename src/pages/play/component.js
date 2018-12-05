@@ -39,7 +39,7 @@ const SHOWCASE_DATA = [
     title: 'lava',
   },
   {
-    link: `/play/creature`,
+    link: `/play/creatures`,
     preview: (
       <div className="preview-wrapper">
         <CreaturePreview />

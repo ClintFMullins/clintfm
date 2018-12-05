@@ -16,7 +16,6 @@ export class ValueWithInfluence {
     const influencingNumbers = [this.initialValue];
 
     this.influences.forEach((influenceData) => {
-      console.log(influenceData)
       const influenceRange = influenceData.max - influenceData.min;
       const baselinedInfluenceValue = influenceData.value - influenceData.min;
       const influenceValue = ((baselinedInfluenceValue / influenceRange) * this.valueRange) + this.min;
@@ -26,7 +25,7 @@ export class ValueWithInfluence {
         numberOfInfluences++;
       }
     });
-    console.log(influencingNumbers, numberOfInfluences)
+
     const sumOfAllInflucences = influencingNumbers.reduce((numA, numB) => numA + numB);
     return Math.round(sumOfAllInflucences / numberOfInfluences);
   }

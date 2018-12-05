@@ -49,38 +49,3 @@
   border-bottom-right-radius: 3px;
   border-right: solid #B3B6B7 1px;
 }
-
-/* @media only screen and (max-width: 600px) {
-  .homepage {
-    font-size: 40px;
-  }
-
-  .choice-wrapper {
-    flex-direction: column;
-  }
-
-  .choice {
-    width: 80%;
-  }
-
-  .choice {
-    border-left: solid #B3B6B7 1px;
-    border-right: solid #B3B6B7 1px;
-  }
-
-  .choice-left {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 0px;
-    border-bottom: none;
-    border-top: solid #B3B6B7 1px;
-  }
-  
-  .choice-right {
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top-right-radius: 0px;
-    border-top: none;
-    border-bottom: solid #B3B6B7 1px;
-  }
-} */

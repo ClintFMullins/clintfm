@@ -1,0 +1,85 @@
+.mating-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.mating-center-wrapper {
+  display: flex;
+  /* width: 100%; */
+  text-align: center;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mating-center {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.mating-parents {
+  background-color: rgb(131, 102, 102);
+  align-items: flex-end;
+}
+
+.mating-children {
+  background-color: rgb(187, 146, 146);
+  align-items: flex-start;
+}
+
+.mating-creature-wrapper {
+  background-color: rgba(255,255,255,0.3);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.mating-creature-wrapper:hover {
+  box-shadow: 0 0 10px white;
+}
+
+.mating-title {
+  color: rgba(255,255,255,0.4);
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.mating-creature-info-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(0,0,0,0.5);
+  color: ghostwhite;
+  cursor: pointer;
+}
+
+.mating-creature-info-button:hover {
+  transform: scale(1.1);
+}
+
+.creature-shown-outer-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+
+@media only screen and (max-width: 600px) {
+  .hide-on-mobile {  
+    display: none;
+  }
+}

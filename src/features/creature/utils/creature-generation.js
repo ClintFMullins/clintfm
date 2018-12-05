@@ -1,6 +1,6 @@
 import { getRandomInsideBounds, randomInRange } from './random';
 
-const PERCENT_MAX = 99;
+export const PERCENT_MAX = 99;
 const PERCENT_MIN = 1;
 
 const MOUTH_MIN = 30;
@@ -17,13 +17,13 @@ export const MOUTH_SIDE_SIZE_VALUES = {
 }
 
 export const BODY_SIDE_SIZE_VALUES = {
-  min: 50,
-  max: 100,
+  min: 30,
+  max: 98,
 }
 
 export const BODY_RADIUS_VALUES = {
   min: 0,
-  max: 5,
+  max: 40,
 }
 
 export const EYE_SIZE_VALUES = {
@@ -36,16 +36,15 @@ export function generateCreatureData() {
   const bodyWidth = randomInRange(BODY_SIDE_SIZE_VALUES.min, BODY_SIDE_SIZE_VALUES.max);
   const bodyHeight = randomInRange(BODY_SIDE_SIZE_VALUES.min, BODY_SIDE_SIZE_VALUES.max);
 
-  const [mouthX, mouthSizeX] = getRandomInsideBounds(MOUTH_MIN, PERCENT_MAX, { minSize: 5 })
+  const [mouthX, mouthSizeX] = getRandomInsideBounds(5, PERCENT_MAX, { minSize: 5 })
   const [mouthY, mouthSizeY] = getRandomInsideBounds(MOUTH_MIN, PERCENT_MAX, { minSize: 5 })
 
   const bothEyesXRange = randomInRange(MIN_EYE_RANGE_SIZE, PERCENT_MAX);
   const eyeSpacing = randomInRange(0, bothEyesXRange - MIN_EYE_RANGE_SIZE);
-  const bothEyesX = randomInRange(PERCENT_MIN, PERCENT_MAX - bothEyesXRange);
+  const eyeLeftX = randomInRange(PERCENT_MIN, PERCENT_MAX - bothEyesXRange);
   const bothEyesSizeX = (bothEyesXRange - eyeSpacing) / 2;
-  const eyeLeftX = bothEyesX;
   const eyeRightX = eyeLeftX + bothEyesSizeX + eyeSpacing;
-  const [bothEyesY, bothEyesSizeY] = getRandomInsideBounds(PERCENT_MIN, mouthY, { minSize: 10 })
+  const [bothEyesY, bothEyesSizeY] = getRandomInsideBounds(PERCENT_MIN, mouthY - 4, { minSize: 10 })
   const bothEyesRadius = randomInRange(3, 10);
 
   const [pupilX, pupilSizeX] = getRandomInsideBounds(PUPIL_MIN, PERCENT_MAX, { minSize: 15 })
@@ -76,6 +75,7 @@ export function generateCreatureData() {
       bottomRightRadius: mouthBottomRightRadius,
     },
     eyes: {
+      bothEyesXRange, // used for ease of mating
       sizeX: bothEyesSizeX,
       sizeY: bothEyesSizeY,
       leftX: eyeLeftX,
