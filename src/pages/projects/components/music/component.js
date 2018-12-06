@@ -1,9 +1,16 @@
-import React, { useReducer, useEffect, useRef } from 'react';
+import React, { useReducer, useEffect, useRef, useState } from 'react';
 import * as TinyMusic from 'tinymusic';
 import * as cn from 'classnames';
 import './styles.css';
+import { MusicDetailPicker } from './components/music-detail-picker/component';
+import { SheetMusic } from './utils/sheet-music';
 
-const audioContext = new AudioContext();
+let audioContext;
+try {
+  audioContext = new AudioContext();
+} catch {
+  console.warn('Must use chrome for AudioContext');
+}
 
 function silence(duration = 'q') {
   return `- ${duration}`
@@ -34,18 +41,8 @@ const getSequenceNoteCount = (state) => state.sequences[0].length;
 const initialState = {
   isPlaying: true,
   tempo: 120,
-  sequences: [
-    [true, false, false, false],
-    [false, true, false, false],
-    [false, false, true, false],
-    [false, false, false, true],
-  ],
-  sequenceNotes: [
-    'C3 q',
-    'E3 q',
-    'F3 q',
-    'G3 q',
-  ],
+  sequences: SheetMusic.Zelda.sequences,
+  sequenceNotes: SheetMusic.Zelda.sequenceNotes,
   currentNoteIndex: 0,
 };
 
@@ -128,6 +125,7 @@ function reducer(state, action) {
 }
 
 export function MusicSequence() {
+  const [sequenceModalIndex, setSequenceModalIndex] = useState(null);
   const [state, dispatch] = useReducer(reducer, initialState);
   const musicSequences = useRef([]);
 
@@ -147,11 +145,12 @@ export function MusicSequence() {
         return shouldPlayNote ? state.sequenceNotes[index] : silence();
       })
 
-      const seq = new TinyMusic.Sequence(audioContext, state.tempo, processedSequence);
-
-      seq.createCustomWave([-0.8, 1, 0.8, 0.8, -0.8, -0.8, -1]);
-      seq.play();
-      newMusicSequences.push(seq);
+      if (audioContext) {
+        const seq = new TinyMusic.Sequence(audioContext, state.tempo, processedSequence);
+        seq.createCustomWave([-0.8, 1, 0.8, 0.8, -0.8, -0.8, -1]);
+        seq.play();
+        newMusicSequences.push(seq);
+      }
     });
 
     musicSequences.current = newMusicSequences;
@@ -160,14 +159,28 @@ export function MusicSequence() {
       dispatch({type: ACTION_INCREMENT_SEQUENCE });
     }, (60 / state.tempo) * 1000);
 
-    return () => clearInterval(visualInterval);
+    return () => {
+      clearInterval(visualInterval);
+      musicSequences.current.forEach((musicSequence) => {
+        musicSequence.stop();
+      });
+    };
   }, [sequenceTrigger])
 
-  console.log(state);
+  function changeNoteSound(note) {
+    dispatch({
+      type: ACTION_UPDATE_NOTE_SOUND,
+      sequenceIndex: sequenceModalIndex,
+      note,
+    });
+  }
 
   return (
     <div className="sequence-page-wrapper">
       <div className="sequence-page-wrapper-inner">
+        { sequenceModalIndex !== null &&
+          <MusicDetailPicker submitNote={changeNoteSound} close={() => setSequenceModalIndex(null)}/>
+        }
         <div className="all-sequences-adding-container">
         <div className="sequence-add-sequence" onClick={() => { dispatch({type: ACTION_MINUS_SEQUENCE}) }}>
             -
@@ -179,18 +192,13 @@ export function MusicSequence() {
             <div className="all-sequences-wrapper">
               {state.sequences.map((sequence, sequenceIndex) => {
                 const sequenceSoundVisual = state.sequenceNotes[sequenceIndex].split(' ')[0];
-
-                function changeNoteSound() {
-                  dispatch({
-                    type: ACTION_UPDATE_NOTE_SOUND,
-                    sequenceIndex,
-                    note: 'G3 q',
-                  })
-                }
+                const noteSoundStyle = cn('sequence-note-sound', {
+                  'sequence-note-sound-editing': sequenceIndex === sequenceModalIndex,
+                });
 
                 return(
                   <div className="sequence-wrapper">
-                    <div className="sequence-note-sound" onClick={changeNoteSound}>
+                    <div className={noteSoundStyle} onClick={() => setSequenceModalIndex(sequenceIndex)}>
                       {sequenceSoundVisual}
                     </div>
                     <div className="sequence-note-wrapper">

@@ -7,6 +7,7 @@ import { Grid } from '../../features/grid/component';
 import { randomInRange } from '../../features/creature/utils/random';
 import './styles.css';
 import { CreaturePreview } from '../../features/creature/preview-component';
+import { PreviewSequence } from '../projects/components/music/preview-component';
 
 const SHOWCASE_DATA = [
   {
@@ -46,6 +47,13 @@ const SHOWCASE_DATA = [
       </div>
     ),
     title: 'creatures',
+  },
+  {
+    link: `/play/sequence`,
+    preview: (
+      <PreviewSequence />
+    ),
+    title: 'sequence',
   },
 ];
 

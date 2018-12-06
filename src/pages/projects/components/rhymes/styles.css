@@ -1,5 +1,5 @@
 .rhyming-page-container {
-  background: linear-gradient(rgba(56, 59, 104, 0.3) 0%, rgba(43, 46, 87, 0.3) 100%);
+  background: #CECECE;
   padding-top: 45px;
 }
 
@@ -12,7 +12,8 @@
   max-width: 98%;
   min-height: 90vh;
   overflow: hidden;
-  background: white;
+  background: rgb(252, 252, 252);
+  border-radius: 2px;
 }
 
 .red-detail {
@@ -75,7 +76,10 @@
 .rhyme-word-typing {
   outline: none;
   border: none;
+  margin: 0 !important;
   padding: 0 !important;
+  -moz-appearance: none;
+  background-color: rgb(252, 252, 252);
 }
 
 .rhyming-button {

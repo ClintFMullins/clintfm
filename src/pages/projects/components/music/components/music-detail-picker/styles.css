@@ -1,0 +1,52 @@
+.music-detail-picker-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background: rgba(0,0,0,0.4);
+  cursor: zoom-out;
+}
+
+.music-detail-picker {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  flex-direction: column;
+  background-color: rgba(193, 193, 193, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 3px;
+  border: white solid 5px;
+  cursor: auto;
+}
+
+.music-detail-button {
+  cursor: pointer;
+  background: white;
+  border: none;
+  margin: 2px;
+  border-radius: 1px;
+}
+.music-detail-button-submit {
+  margin-top: 20px;
+  background: ghostwhite;
+}
+
+.music-detail-section {
+  margin-bottom: 3px;
+}
+
+.music-detail-button-selected {
+  box-shadow: 0 0 0 2px gold;
+}
+
+.music-detail-submission {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}

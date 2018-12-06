@@ -1,0 +1,28 @@
+.preview-sequence-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 100%;
+}
+
+.preview-sequence {
+  display: flex;
+  height: 100%;
+}
+
+.preview-sequence-square {
+  background-color: lightblue;
+  border-radius: 2px;
+  margin: 2px;
+  flex-grow: 1;
+  opacity: 0.9;
+  transition: opacity linear 200ms;
+}
+
+.preview-sequence-square:hover {
+  opacity: 1;
+  background-color: coral;
+}
