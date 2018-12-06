@@ -1,4 +1,4 @@
-This is my personal site.
+This is my personal site, hosted here: https://clintfmullins.github.io/clintfm
 
 It has two primary purposes:
 
