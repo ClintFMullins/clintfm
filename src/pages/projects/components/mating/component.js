@@ -5,6 +5,7 @@ import { mateCreatures } from '../../../../features/creature/utils/creature-mati
 import { CreatureStats } from '../../../../features/creature-stats/component';
 import { getCreatureAttributes } from '../../../../features/creature/utils/creature-attributes';
 import './styles.css';
+import { useWindowSize } from '../../../../utils/dom';
 
 function getCreatureData(creature) {
   return {
@@ -35,6 +36,7 @@ function MatingCreature(props) {
 const CHILD_COUNT = 3;
 
 export function Mating() {
+  const { height } = useWindowSize();
   const [ creatureToShow, setCreatureToShow ] = useState(null);
   // You're not supposed to call useState in loops - but these are based on constants
   // so it won't break anything. In a large project with more folks this would be a 
@@ -85,7 +87,7 @@ export function Mating() {
   });
 
   return (
-    <div className="mating-container">
+    <div className="mating-container" style={{ height }}>
       {creatureToShow !== null && <CreatureShown creature={creatureToShow} close={() => setCreatureToShow(null)} />}
       <div className="mating-parents mating-center">
         <div className="mating-center-wrapper">

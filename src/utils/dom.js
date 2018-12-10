@@ -13,7 +13,7 @@ export function useDomDimensions() {
 
   useLayoutEffect(() => {
     updateContainerSize();
-  }, [])
+  })
 
   useLayoutEffect(() => {
     ref.current.addEventListener('resize', updateContainerSize);
@@ -21,7 +21,7 @@ export function useDomDimensions() {
     return () => {
       ref.current.removeEventListener('resize', updateContainerSize)
     }
-  }, []);
+  });
 
   return { ref, width, height };
 }
@@ -41,7 +41,7 @@ export function useWindowSize() {
     return () => {
       window.removeEventListener('resize', updateWindowSize)
     }
-  }, []);
+  });
 
   return { width, height };
 }

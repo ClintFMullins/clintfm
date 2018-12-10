@@ -10,12 +10,12 @@ export function Lavalamp() {
   const scaledHeight = Math.floor(height * 0.6);
 
   return (
-    <div className="lava-wrapper">
+    <div className="lava-wrapper" style={{ height }}>
       <Grid
         width={scaledWidth}
         height={scaledHeight}
         velocity={8}
-        squareSize={15}
+        squareSize={30}
       />
     </div>
   );

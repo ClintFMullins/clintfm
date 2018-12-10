@@ -1,10 +1,13 @@
 import React from 'react';
 import { getWrittenTime, SORTED_TECH_SKILLS_KEYS, TECH_SKILLS } from './utils';
 import './styles.css';
+import { useWindowSize } from '../../../../utils/dom';
 
 export function TechSkills() {
+  const { height } = useWindowSize();
+
   return (
-    <div className="tech-skills-wrapper">
+    <div className="tech-skills-wrapper" style={{ height }}>
       <div>
         <div className="core-strengths-header">Tech Experience</div>
         <div className="tech-skills-skill-wrapper">

@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import { getAngryPhrase, getHappyPhrase } from './utils/phrases';
 import './styles.css';
+import { useWindowSize } from '../../../../utils/dom';
 
 function getRandomClampedPercent() {
   return `${(Math.random() * 60) + 15}%`;
@@ -44,6 +45,7 @@ const initialState = {
 
 export function CTA() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { height } = useWindowSize();
 
   const { top, left, isDisabled, phrase } = state;
 
@@ -65,6 +67,7 @@ export function CTA() {
 
   const wrapperStyle = {
     backgroundColor: isDisabled ? 'black' : 'LightYellow',
+    height,
   }
 
   return (

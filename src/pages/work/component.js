@@ -2,12 +2,15 @@ import React from 'react';
 import { CorePrinciples } from './components/core-principles/component';
 import { TechSkills } from './components/tech-skills/component';
 import './styles.css';
+import { useWindowSize } from '../../utils/dom';
 
 export function Work() {
+  const { height } = useWindowSize();
+
   return (
     <div className="work-wrapper">
       <div className="work">
-        <div className="intro">
+        <div className="intro" style={{ height }}>
           <div>
             Hi, my name is 
             <br />

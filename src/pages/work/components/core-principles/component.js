@@ -1,4 +1,5 @@
 import React from 'react';
+import { useWindowSize } from '../../../../utils/dom';
 
 const SECTION_TITLE_TO_TEXT = {
   'Exhibit ownership': `I try to always think like an owner. "How can I make this better?" I believe if everyone feels ownership, the resulting product will excel.`,
@@ -15,8 +16,10 @@ const SECTION_TITLE_TO_TEXT = {
 }
 
 export function CorePrinciples() {
+  const { height } = useWindowSize();
+
   return (
-    <div className="core-strengths">
+    <div className="core-strengths" style={{ minHeight: height }}>
       <div>
         <div className="core-strengths-header">Core Principles</div>
 
