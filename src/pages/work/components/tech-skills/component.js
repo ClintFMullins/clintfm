@@ -7,7 +7,7 @@ export function TechSkills() {
   const { height } = useWindowSize();
 
   return (
-    <div className="tech-skills-wrapper" style={{ height }}>
+    <div className="tech-skills-wrapper" style={{ minHeight: height }}>
       <div>
         <div className="core-strengths-header">Tech Experience</div>
         <div className="tech-skills-skill-wrapper">
