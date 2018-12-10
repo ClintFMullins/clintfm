@@ -31,8 +31,10 @@ export function useWindowSize() {
   const [height, setHeight] = useState(window.innerHeight);
 
   function updateWindowSize() {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
+    if (width !== window.innerWidth) {
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+    }
   }
 
   useLayoutEffect(() => {
