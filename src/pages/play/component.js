@@ -8,32 +8,33 @@ import { randomInRange } from '../../features/creature/utils/random';
 import './styles.css';
 import { CreaturePreview } from '../../features/creature/preview-component';
 import { PreviewSequence } from '../projects/components/music/preview-component';
+import { useWindowSize } from '../../utils/dom';
 
 const SHOWCASE_DATA = [
   {
     link: `/play/current-time`,
-    preview: <TimeWidget size={150} isRound={true} />,
+    preview: (size) => <TimeWidget size={size} isRound={true} />,
     title: 'now',
   },
   {
     link: `/play/cta`,
-    preview: <PreviewCTA />,
+    preview: () => <PreviewCTA />,
     title: 'click',
   },
   {
     link: `/play/rhymes`,
-    preview: <PreviewRhymes />,
+    preview: () => <PreviewRhymes />,
     title: 'rhymes',
   },
   {
     link: `/play/lava`,
-    preview: (
+    preview: (size) => (
       <div className="preview-wrapper">
         <Grid
-          width={150}
-          height={150}
+          width={size}
+          height={size}
           velocity={2}
-          squareSize={15}
+          squareSize={size / 5}
         />
       </div>
     ),
@@ -41,16 +42,16 @@ const SHOWCASE_DATA = [
   },
   {
     link: `/play/creatures`,
-    preview: (
+    preview: (size) => (
       <div className="preview-wrapper">
-        <CreaturePreview />
+        <CreaturePreview size={size / 4}/>
       </div>
     ),
     title: 'creatures',
   },
   {
     link: `/play/sequence`,
-    preview: (
+    preview: () => (
       <PreviewSequence />
     ),
     title: 'sequence',
@@ -58,6 +59,10 @@ const SHOWCASE_DATA = [
 ];
 
 export function Play() {
+  const { width, height } = useWindowSize();
+
+  const size = Math.min(width / 4, height / 3);
+
   return (
     <div className="play">
       <div className="play-projects">
@@ -68,28 +73,13 @@ export function Play() {
                 link={data.link}
                 hue={randomInRange(0, 360)}
                 title={data.title}
+                size={size}
               >
-                {data.preview}
+                {data.preview(size)}
               </Showcase>
             </div>
           )
         })}
-        <ProjectUnderConstruction />
-      </div>
-    </div>
-  );
-}
-
-export function ProjectUnderConstruction() {
-  return (
-    <div className="showcase-wrapper">
-      <div className="not-real-project">
-        <div className="not-real-project">
-          <div className="not-real-project">
-            <div className="not-real-project-inner">
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

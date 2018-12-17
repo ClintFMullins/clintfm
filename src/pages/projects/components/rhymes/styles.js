@@ -1,9 +1,11 @@
-.rhyming-page-container {
+import styled from 'styled-components';
+
+export const PageContainer = styled.div`
   background: #CECECE;
   padding-top: 45px;
-}
+`
 
-.rhyming-page-wrapper {
+export const Paper = styled.div`
   position: relative;
   margin: 0 auto;
   box-shadow: 1px 1px 10px black;
@@ -14,9 +16,9 @@
   overflow: hidden;
   background: rgb(252, 252, 252);
   border-radius: 2px;
-}
+`
 
-.red-detail {
+export const PaperRedLine = styled.div`
   position: absolute;
   z-index: 10;
   top: 0;
@@ -24,9 +26,9 @@
   width: 2px;
   height: 100%;
   background-color: lightcoral;
-}
+`
 
-.rap-title {
+export const RapTitle = styled.div`
   position: absolute;
   width: 100%;
   top: 44px;
@@ -35,101 +37,68 @@
   text-decoration: underline;
   font-family: cursive;
   color: hsl(204, 2%, 26%);
-}
+`
 
-.rhyme-word-wrapper-top {
-  border-top: 2px solid rgb(159, 211, 228);
-}
-
-.rhyme-word-wrapper-shared {
+export const RhymeWordWrapper = styled.div`
   overflow-x: hidden;
   padding-bottom: 0;
   white-space: nowrap;
-  border-bottom: 2px solid rgb(159, 211, 228);
-}
-
-.rhyme-word-wrapper {
   position: relative;
-  z-index: 2;
+  z-index: ${props => props.isBackground ? 0 : 2};
   font-size: 25px;
   padding-left: 60px;
-}
+  border-bottom: 2px solid rgb(159, 211, 228);
+  border-top: ${props => props.isTop ? "2px solid rgb(159, 211, 228)" : "none"};
+  height: 47px;
+`
 
-.rhyme-word-input-wrapper {
+export const RhymeWordInputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+  padding-left: 60px;
+  position: relative;
+  z-index: 3;
+`
 
-.background-rhyme-word-wrapper {
-  overflow-x: hidden;
-  height: 47px;
-}
-
-.rhyme-word {
+export const RhymeWord = styled.span`
   font-size: 40px;
   display: inline-block;
   margin-right: 2%;
   color: hsl(195, 3%, 71%);
-}
+`
 
-.rhyme-word-typing {
+export const RhymeWordTyping = styled.input`
+  font-size: 40px;
+  display: inline-block;
+  margin-right: 2%;
+  color: hsl(195, 3%, 71%);
   outline: none;
   border: none;
   margin: 0 !important;
   padding: 0 !important;
   -moz-appearance: none;
-  background-color: rgb(252, 252, 252);
-}
+  background-color: rgb(252,252,252,0);
+`
 
-.rhyming-button {
-  position: fixed;
-  right: 10px;
-  width: 100px;
-  height: 50px;
-  cursor: pointer;
-  color: white;
-  font-size: 15px;
-  border: none;
-}
-
-.rhyming-button:hover {
-  transform: scale(1.05);
-  z-index: 100;
-}
-
-.rhyming-trigger {
-  top: 10px;
-  background-color: green;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-
-.rhyming-reset {
-  top: 60px;
-  background-color: red;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.one-of-many-rhymes {
+export const OneOfManyRhymes = styled.span`
   color: hsl(204, 2%, 39%);
   cursor: pointer;
-}
 
-.one-of-many-rhymes:hover {
-  color: hsl(204, 2%, 15%);
-}
+  :hover {
+    color: hsl(204, 2%, 15%);
+  }
+`
 
-.background-layer {
+export const BackgroundLayer = styled.div`
   position: absolute;
   top: 98px;
   left: 0;
   width: 100%;
   height: 100%;
-}
+`
 
-.fade-out-detail {
+export const FadeOutDetail = styled.div`
   position: absolute;
   right: 0;
   top: 0;
@@ -138,25 +107,25 @@
   width: 30%;
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgb(255, 255, 255) 100%);
   pointer-events: none;
-}
+`
 
-.trigger-record {
+export const RecordButton = styled.span`
   color: rgba(255, 0, 0, 0.7);
   font-size: 14px;
   cursor: pointer;
-}
 
-.trigger-record:hover {
-  color: rgba(255, 0, 0, 1);
-}
+  :hover {
+    color: rgba(255, 0, 0, 1);
+  }
+`
 
-.trigger-reset {
+export const ResetButton = styled.span`
   color: hsl(195, 3%, 71%);
   font-size: 14px;
   cursor: pointer;
   margin-right: 10px;
-}
 
-.trigger-reset:hover {
-  color: hsl(195, 3%, 41%);
-}
+  :hover {
+    color: hsl(195, 3%, 41%);
+  }
+`

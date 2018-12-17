@@ -1,32 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
-import './styles.css';
+import { HomepageLink, ChoiceContainer, Profile } from './styles.js';
 
 function HomepageChoice() {
-  return <div className="profile">clint.fm</div>;
+  return <Profile>clint.fm</Profile>;
 }
 
 function EverywhereElse() {
   return (
     <>
-      <Link className="choice choice-left" to="/work">
+      <HomepageLink isLeft={true} to="/work">
         w
-      </Link>
-      <Link className="choice choice-right" to="/play">
+      </HomepageLink>
+      <HomepageLink isLeft={false} to="/play">
         p
-      </Link>
+      </HomepageLink>
     </>
   );
 }
 
 export function Choice() {
   return (
-    <div className="choice-container">
+    <ChoiceContainer>
       <Switch>
         <Route exact path='/' component={HomepageChoice}/>
         <Route path='/' component={EverywhereElse}/>
       </Switch>
-    </div>
+    </ChoiceContainer>
   );
 }

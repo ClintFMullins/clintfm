@@ -13,7 +13,7 @@ export function Showcase(props) {
       <div className="showcase" style={style}>
         <div className="showcase" style={style}>
           <div className="showcase" style={style}>
-            <div style={{ width: '150px', height: '150px' }}>
+            <div style={{ width: `${props.size}px`, height: `${props.size}px` }}>
               {props.children}
             </div>
           </div>

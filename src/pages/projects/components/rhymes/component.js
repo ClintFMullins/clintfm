@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { useVoiceRecording } from './utils/use-voice-recording';
-import './styles.css';
+import { PageContainer, Paper, BackgroundLayer, OneOfManyRhymes, PaperRedLine, FadeOutDetail, ResetButton, RapTitle, RecordButton, RhymeWordWrapper, RhymeWordInputWrapper, RhymeWordTyping, RhymeWord } from './styles.js';
 
 function smoothScrollToBottom() {
   window.scroll({
@@ -70,13 +70,12 @@ export function Rhymes() {
 
   function renderRhyme(word, index) {
     return (
-      <span
+      <OneOfManyRhymes
         key={index}
-        className="one-of-many-rhymes"
         onClick={() => queueWord(word)}
       >
         {word}{' '}
-      </span>
+      </OneOfManyRhymes>
     );
   }
 
@@ -84,27 +83,26 @@ export function Rhymes() {
     const rhymesForWord = wordRhymes[word] || [];
 
     return (
-      <div key={index} className="rhyme-word-wrapper-shared rhyme-word-wrapper">
-        <span className="rhyme-word">
+      <RhymeWordWrapper key={index}>
+        <RhymeWord>
           {word}
-        </span>
+        </RhymeWord>
         {rhymesForWord.map(renderRhyme)}
-        <div className="fade-out-detail" />
-      </div>
+        <FadeOutDetail />
+      </RhymeWordWrapper>
     )
   }
 
   return (
-    <div className="rhyming-page-container">
-      <div className="rhyming-page-wrapper">
-        <div className="red-detail" />
-        <div className="rap-title">My Sweet Rhymes</div>
-        {renderBackground(15, refFocus)}
+    <PageContainer>
+      <Paper>
+        <PaperRedLine />
+        <RapTitle>My Sweet Rhymes</RapTitle>
+        {renderBackground(40, refFocus)}
         <div>{words.map(renderWordRhyme)}</div>
-        <div className="rhyme-word-wrapper-shared rhyme-word-wrapper rhyme-word-input-wrapper">
-          <input
+        <RhymeWordInputWrapper>
+          <RhymeWordTyping
             ref={ref}
-            className="rhyme-word rhyme-word-typing"
             value={typed}
             onChange={onInputChange}
             onKeyDown={onInputKeyDown}
@@ -113,29 +111,26 @@ export function Rhymes() {
           <span>
             {supportsRecording &&
               <>
-                <span className="trigger-record" onClick={triggerRecording}>record</span> / {' '}
+                <RecordButton onClick={triggerRecording}>record</RecordButton> / {' '}
               </>
             }
-            <span className="trigger-reset" onClick={resetRhymes}>clear</span>
+            <ResetButton onClick={resetRhymes}>clear</ResetButton>
           </span>
-        </div>
-      </div>
-    </div>
+        </RhymeWordInputWrapper>
+      </Paper>
+    </PageContainer>
   );
 }
 
 function renderBackground(size, refFocus) {
   return (
-    <div className="background-layer" onClick={refFocus}>
+    <BackgroundLayer onClick={refFocus}>
       {
         Array.from(new Array(size)).map((_, index) => (
-          <div
-            key={index}
-            className={`${index === 0 ? 'rhyme-word-wrapper-top' : ''} rhyme-word-wrapper-shared background-rhyme-word-wrapper`}
-          />
+          <RhymeWordWrapper key={index} isTop={index === 0} isBackground={true} />
         ))
       }
-    </div>
+    </BackgroundLayer>
   );
 }
 

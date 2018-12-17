@@ -5,9 +5,6 @@ function fillCanvasSquare(context, x1, y1, x2, y2, hue) {
   context.rect(x1, y1, x2, y2);
   context.fillStyle = `hsl(${hue}, 100%, 80%)`;
   context.fill();
-
-  context.fillStyle = `black`;
-  context.fillText(hue,x1,y1 + 50);
 }
 
 export function initializeGrid(rowCount, columnCount) {

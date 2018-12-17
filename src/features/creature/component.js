@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import { CreatureBodyWrapper, CreatureBody, CreatureEyeLeft, CreatureEyeRight, CreatureEyePupilWrapper, CreatureEyePupil, CreatureMouth } from './styles.js'
 
 const px = (num) => `${num}px`;
 const pc = (num) => `${num}%`;
@@ -77,20 +77,20 @@ export function Creature(props) {
   }
 
   return (
-    <div className="creature-body-wrapper" style={bodyWrapperStyle}>
-      <div className="creature-body" style={bodyStyle}>
-        <div className="creature-eye-left" style={eyeLeftStyle}>
-          <div className="creature-eye-pupil-wrapper">
-            <div className="creature-eye-pupil" style={pupilStyle} />
-          </div>
-        </div>
-        <div className="creature-eye-right" style={eyeRightStyle}>
-          <div className="creature-eye-pupil-wrapper">
-            <div className="creature-eye-pupil" style={pupilStyle} />
-          </div>
-        </div>
-        <div className="creature-mouth" style={mouthStyle} />
-      </div>
-    </div>
+    <CreatureBodyWrapper style={bodyWrapperStyle}>
+      <CreatureBody style={bodyStyle}>
+        <CreatureEyeLeft style={eyeLeftStyle}>
+          <CreatureEyePupilWrapper>
+            <CreatureEyePupil style={pupilStyle} />
+          </CreatureEyePupilWrapper>
+        </CreatureEyeLeft>
+        <CreatureEyeRight style={eyeRightStyle}>
+          <CreatureEyePupilWrapper>
+            <CreatureEyePupil style={pupilStyle} />
+          </CreatureEyePupilWrapper>
+        </CreatureEyeRight>
+        <CreatureMouth style={mouthStyle} />
+      </CreatureBody>
+    </CreatureBodyWrapper>
   );
 }

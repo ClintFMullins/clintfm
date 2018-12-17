@@ -3,9 +3,9 @@ import { useRenderInterval } from '../../utils/render-interval';
 import { generateCreatureData } from './utils/creature-generation';
 import { Creature } from './component';
 
-export function CreaturePreview() {
+export function CreaturePreview({ size }) {
   const [userIsHovering, setUserIsHovering] = useState(false);
-  const updatingCreatureData = useRenderInterval(1000, generateCreatureData, userIsHovering);
+  const updatingCreatureData = useRenderInterval(200, generateCreatureData, userIsHovering);
 
   return (
     <div
@@ -13,7 +13,7 @@ export function CreaturePreview() {
       onMouseLeave={() => setUserIsHovering(false)}
     >
       <Creature
-        size={50}
+        size={size}
         creatureData={updatingCreatureData}
       />
     </div>

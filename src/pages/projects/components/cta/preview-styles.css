@@ -4,13 +4,13 @@
   align-items: center;
   background-color: lightgoldenrodyellow;
   border-radius: 100%;
-  height: 150px;
-  width: 150px;
+  width: 100%;
+  height: 100%;
 }
 
 .little-button {
-  width: 30px;
-  height: 15px;
+  width: 20%;
+  height: 10%;
   background-color: cornflowerblue;
   border-radius: 4px;
 }

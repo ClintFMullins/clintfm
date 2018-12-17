@@ -26,20 +26,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 150px;
-}
-
-.not-real-project {
-  cursor: not-allowed;
-  padding: 5px;
-  border-radius: 100%;
-  border: 1px dotted rgba(0,0,0, 0.4);
-}
-
-.not-real-project-inner {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  border: 1px dotted rgba(0,0,0, 0.4);
+  height: 100%;
+  width: 100%;
 }

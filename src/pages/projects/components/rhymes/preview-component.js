@@ -1,5 +1,5 @@
 import React from 'react';
-import './preview-styles.css';
+import { RhymesPreview, RhymeLine } from './preview-styles';
 import { useRenderInterval } from '../../../../utils/render-interval';
 
 let numberOfLines = 3;
@@ -14,13 +14,13 @@ function getNumberOfLines() {
 }
 
 export function PreviewRhymes() {
-  const numberOfLines = useRenderInterval(3000, getNumberOfLines)
+  const numberOfLines = useRenderInterval(1000, getNumberOfLines)
 
   return (
-    <div className="rhymes-preview">
+    <RhymesPreview>
       {Array.from(new Array(numberOfLines)).map((_, index) => (
-        <div key={index} className="rhyme-line" />
+        <RhymeLine key={index} />
       ))}
-    </div>
+    </RhymesPreview>
   );
 }
