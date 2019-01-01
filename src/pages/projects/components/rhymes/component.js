@@ -2,14 +2,6 @@ import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { useVoiceRecording } from './utils/use-voice-recording';
 import { PageContainer, Paper, BackgroundLayer, OneOfManyRhymes, PaperRedLine, FadeOutDetail, ResetButton, RapTitle, RecordButton, RhymeWordWrapper, RhymeWordInputWrapper, RhymeWordTyping, RhymeWord } from './styles.js';
 
-function smoothScrollToBottom() {
-  window.scroll({
-    top: document.body.clientHeight, 
-    left: 0,
-    behavior: 'smooth',
-  });
-}
-
 export function Rhymes() {
   const { triggerRecording, recordedWords, supportsRecording } = useVoiceRecording();
   const [words, setWords] = useState([]);
@@ -58,8 +50,6 @@ export function Rhymes() {
           setWordRhymes((prevWordRhymes) => (
             { ...prevWordRhymes, [word]: subsetOfRhymes }
           ));
-
-          smoothScrollToBottom();
         });
       }).catch((error) => console.error(error));
   }

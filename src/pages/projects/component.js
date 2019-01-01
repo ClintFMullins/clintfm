@@ -6,6 +6,7 @@ import { Rhymes } from './components/rhymes/component';
 import { Lavalamp } from './components/lavalamp/component';
 import { Mating } from './components/mating/component';
 import { MusicSequence } from './components/music/component';
+import { tutorialSVG } from '../../features/svg/component';
 
 export function Projects() {
   return (
@@ -16,6 +17,7 @@ export function Projects() {
       <Route exact path='/play/lava' component={Lavalamp}/>
       <Route exact path='/play/creatures' component={Mating}/>
       <Route exact path='/play/sequence' component={MusicSequence}/>
+      <Route exact path='/play/svg' component={tutorialSVG}/>
     </Switch>
   );
 }
