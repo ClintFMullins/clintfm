@@ -7,6 +7,7 @@ import { Lavalamp } from './components/lavalamp/component';
 import { Mating } from './components/mating/component';
 import { MusicSequence } from './components/music/component';
 import { tutorialSVG } from '../../features/svg/component';
+import { PS1Gen } from '../../features/ps1/component';
 
 export function Projects() {
   return (
@@ -18,6 +19,7 @@ export function Projects() {
       <Route exact path='/play/creatures' component={Mating}/>
       <Route exact path='/play/sequence' component={MusicSequence}/>
       <Route exact path='/play/svg' component={tutorialSVG}/>
+      <Route exact path='/play/ps1' component={PS1Gen}/>
     </Switch>
   );
 }

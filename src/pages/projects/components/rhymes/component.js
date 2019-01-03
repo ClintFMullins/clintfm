@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { useVoiceRecording } from './utils/use-voice-recording';
+import { useWindowSize } from '../../../../utils/dom';
 import { PageContainer, Paper, BackgroundLayer, OneOfManyRhymes, PaperRedLine, FadeOutDetail, ResetButton, RapTitle, RecordButton, RhymeWordWrapper, RhymeWordInputWrapper, RhymeWordTyping, RhymeWord } from './styles.js';
 
 export function Rhymes() {
@@ -8,6 +9,7 @@ export function Rhymes() {
   const [wordRhymes, setWordRhymes] = useState([]);
   const [typed, setTyped] = useState('');
   const { ref, refFocus } = useFocusOnLoad();
+  const { height } = useWindowSize();
 
   function submitTyped(word) {
     if (word.trim() === '') {
@@ -84,7 +86,7 @@ export function Rhymes() {
   }
 
   return (
-    <PageContainer>
+    <PageContainer style={{ minHeight: height }}>
       <Paper>
         <PaperRedLine />
         <RapTitle>My Sweet Rhymes</RapTitle>

@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 
 export const ChoiceContainer = styled.div`
   position: fixed;
-  top: 20px;
+  top: 10px;
   right: 10px;
   width: 70px;
-  height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +25,7 @@ export const HomepageLink = styled(Link)`
   border-top: solid #B3B6B7 1px;
   border-bottom: solid #B3B6B7 1px;
   color: #7B7D7D;
-  padding: 10px;
+  padding: 8px;
   text-decoration: none;
   color: #626567;
 

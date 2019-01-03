@@ -16,6 +16,7 @@ export const Paper = styled.div`
   overflow: hidden;
   background: rgb(252, 252, 252);
   border-radius: 2px;
+  box-sizing: content-box;
 `
 
 export const PaperRedLine = styled.div`
@@ -50,6 +51,7 @@ export const RhymeWordWrapper = styled.div`
   border-bottom: 2px solid rgb(159, 211, 228);
   border-top: ${props => props.isTop ? "2px solid rgb(159, 211, 228)" : "none"};
   height: 47px;
+  box-sizing: content-box;
 `
 
 export const RhymeWordInputWrapper = styled.div`

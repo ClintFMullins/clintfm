@@ -5,6 +5,7 @@ import { Projects } from '../pages/projects/component';
 import { Play } from '../pages/play/component';
 import { Work } from '../pages/work/component';
 import { Choice } from '../features/choice/component';
+import './styles.css';
 
 export function App() {
   return (
