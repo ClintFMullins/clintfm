@@ -13,6 +13,7 @@ export const AddOneWrapper = styled.div`
   color: ${textColor};
   cursor: pointer;
   opacity: 0.6;
+  box-sizing: content-box;
   
   :hover {
     opacity: 1;
