@@ -7,12 +7,6 @@ const backgroundColor = '#f8f8ff14';
 export const EditableItemWrapper = styled.div`
   display: inline-block;
   margin-right: 8px;
-  opacity: 0.6;
-  transition: opacity 200ms linear;
-
-  :hover {
-    opacity: 1;
-  }
 `;
 
 export const EditableItemTop = styled.div`
@@ -58,18 +52,6 @@ export const EditableItemRight = styled(EditableSelection)`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-export const EditableItemColor = styled(EditableSelection)`
-  background-color: black;
-  color: white;
-  padding: 3px;
-`;
-
-export const EditableItemColorInner = styled.div`
-  background-color: blue;
-  width: 100%;
-  height: 100%;
-  border-radius: 1px;
 `;
 
 export const EditableItemBody = styled.div`

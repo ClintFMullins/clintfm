@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getHSLColor } from '../../utils/color';
 
 export const PageWrapper = styled.div`
   width: 100%;
@@ -55,4 +56,31 @@ export const SubduedWrapper = styled.div`
 export const Spacer = styled.div`
   width: 100%;
   height: 30px;
+`;
+
+export const PresentTextWrapper = styled.div`
+  display: inline-block;
+  color: ${props => getHSLColor(props.hue)};
+`;
+
+export const ButtonGetCode = styled.button`
+  background: #757ecb;
+  padding: 10px 15px;
+  color: #fffdd7c4;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  transform: scale(0.8);
+  transition: transform ease-out 200ms;
+
+  :hover {
+    transform: scale(1);
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;

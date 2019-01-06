@@ -1,9 +1,9 @@
 import React from 'react';
 import { AddOneWrapper, AddOneInner } from './styles';
 
-export function AddOne() {
+export function AddOne({ onClick }) {
   return (
-    <AddOneWrapper>
+    <AddOneWrapper onClick={onClick}>
       <AddOneInner>
         ＋
       </AddOneInner>

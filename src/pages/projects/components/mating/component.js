@@ -54,7 +54,7 @@ export function Mating() {
 
   const parentTriggerNewCreatureFuncs = parentCreatureData.map((creatureData, index) => {
     return () => {
-      const [_, setCreatureState] = creatureData;
+      const [, setCreatureState] = creatureData;
 
       const newParent = getCreatureData(generateCreatureData());
       const otherParent = index === 0 ? parent2 : parent1;
@@ -62,7 +62,7 @@ export function Mating() {
       setCreatureState(newParent);
 
       childrenCreatureData.forEach((childrenCreatureData) => {
-        const [_, setChildCreatureState] = childrenCreatureData;
+        const [, setChildCreatureState] = childrenCreatureData;
 
         setChildCreatureState(getCreatureData(mateCreatures(newParent.data, otherParent.data)))
       })
@@ -71,7 +71,7 @@ export function Mating() {
 
   const childrenTriggerNewCreatureFuncs = childrenCreatureData.map((creatureData) => {
     return () => {
-      const [_, setCreatureState] = creatureData;
+      const [, setCreatureState] = creatureData;
 
       setCreatureState(getCreatureData(mateCreatures(parent1.data, parent2.data)));
     }
