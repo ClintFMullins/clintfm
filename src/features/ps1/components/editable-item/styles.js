@@ -55,13 +55,16 @@ export const EditableItemRight = styled(EditableSelection)`
 `;
 
 export const EditableItemBody = styled.div`
-  padding: 10px 20px;
   border: ${color} 2px solid;
   border-top: ${color} 1px solid;
   border-bottom: ${color} 2px solid;
   color: ${textColor};
   cursor: zoom-in;
-  text-align: center;
+  height: 50px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const EditableItemBottom = styled.div`

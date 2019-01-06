@@ -5,7 +5,7 @@
 export const SEGMENT_DATA = {
   currentDirectory: {
       code: "\\W",
-      example: "dir",
+      example: "cur-dir",
   },
   date: {
       code: "\\d",
@@ -33,11 +33,11 @@ export const SEGMENT_DATA = {
   },
   hostname: {
       code: "\\h",
-      example: "host"
+      example: "host-with-most"
   },
   pathToCurrentDirectory: {
       code: "\\w",
-      example: "~/dir"
+      example: "~/projects/cur-dir"
   },
   promptChar: {
       code: "\\\\$",
@@ -66,7 +66,7 @@ export const SEGMENT_DATA = {
   },
   username: {
       code: "\\u",
-      example: "user"
+      example: "clintfm"
   },
   gitStatus: {
       code: "\\`parse_git_branch\\`",

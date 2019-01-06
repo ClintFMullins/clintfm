@@ -1,29 +1,22 @@
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 
-// Doesn't seem to work :thinking:
-export function useDomDimensions() {
-  const ref = useRef(null);
-  const [width, setWidth] = useState(null);
-  const [height, setHeight] = useState(null);
+export function useFocusOnLoad({ select } = {}) {
+  const ref = useRef();
+  const hasSelected = useRef(false);
 
-  function updateContainerSize() {
-    setWidth(ref.current && ref.current.clientWidth);
-    setHeight(ref.current && ref.current.clientHeight);
+  function refFocus() {
+    if (ref && ref.current && ref.current.focus) {
+      ref.current.focus();
+      if (select && !hasSelected.current) {
+        hasSelected.current = true;
+        ref.current.select();
+      }
+    }
   }
 
-  useLayoutEffect(() => {
-    updateContainerSize();
-  })
+  useEffect(refFocus);
 
-  useLayoutEffect(() => {
-    ref.current.addEventListener('resize', updateContainerSize);
-
-    return () => {
-      ref.current.removeEventListener('resize', updateContainerSize)
-    }
-  });
-
-  return { ref, width, height };
+  return { ref, refFocus };
 }
 
 export function useWindowSize() {

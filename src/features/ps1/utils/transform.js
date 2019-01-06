@@ -1,3 +1,4 @@
+import React from 'react';
 import style from 'ansi-styles';
 import { SEGMENT_DATA } from './segments';
 
@@ -15,7 +16,7 @@ export function getConvertedPS1(segments) {
   let currentColor = null;
 
   const PS1 = segments.reduce((bashString, segment) => {
-    const segmentData = SEGMENT_DATA[segment.id];
+    const segmentData = SEGMENT_DATA[segment.id] || {};
 
     if (segmentData.pre) {
       pre += segmentData.pre;
@@ -33,7 +34,7 @@ export function getConvertedPS1(segments) {
       newBashSubstring += getAnsiColorStart(segment.color)
     }
 
-    newBashSubstring += segmentData.code;
+    newBashSubstring += segment.customText || segmentData.code;
 
     return bashString + newBashSubstring;
   }, 'export PS1="');
@@ -41,4 +42,17 @@ export function getConvertedPS1(segments) {
   const colorStop = currentColor === null ? '' : getColorEnd();
 
   return pre + '\n\n' + PS1 + colorStop + '"';
+}
+
+export function getPreview(segment) {
+  const isSpace = segment.id === 'space';
+
+  let content = segment.customText;
+  if (isSpace) {
+    content = <span>&nbsp;</span>;
+  } else if (!content) {
+    content = SEGMENT_DATA[segment.id].example;
+  }
+
+  return content;
 }

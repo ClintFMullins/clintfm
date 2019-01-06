@@ -5,9 +5,8 @@ import { PageWrapper, BeautifulWrapper, PresentZone, PageWrapperInner, SubduedWr
 import { AddOne } from './components/add-one/component';
 import { ACTION_ADD, reducer, initialState } from './reducer';
 import { PresentTextWrapper } from './styles';
-import { SEGMENT_DATA } from './utils/segments';
 import copy from 'copy-to-clipboard';
-import { getConvertedPS1 } from './utils/transform';
+import { getConvertedPS1, getPreview } from './utils/transform';
 import { ButtonWrapper } from './styles';
 import { SegmentPicker } from './components/segment-picker/component';
 
@@ -21,10 +20,7 @@ export function PS1Gen() {
   }
 
   function copyCode() {
-    copy(getConvertedPS1(segments), {
-      debug: true,
-      message: 'Press #{key} to copy',
-    });
+    copy(getConvertedPS1(segments));
   }
 
   return (
@@ -39,9 +35,7 @@ export function PS1Gen() {
                   return (
                     <Editable
                       key={Math.random()}
-                      color={segment.color}
-                      colorPickerOpen={segment.colorPickerOpen}
-                      segmentId={segment.id}
+                      segment={segment}
                       dispatch={dispatch}
                       index={index}
                     />
@@ -54,11 +48,9 @@ export function PS1Gen() {
           <BeautifulWrapper>
             <PresentZone>
               {segments.map((segment) => {
-                const isSpace = segment.id === 'space';
-
                 return (
                   <PresentTextWrapper key={Math.random()} hue={segment.color}>
-                    {isSpace ? <span>&nbsp;</span> : SEGMENT_DATA[segment.id].example}
+                    {getPreview(segment)}
                   </PresentTextWrapper>
                 )
               })}

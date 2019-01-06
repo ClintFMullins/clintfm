@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useVoiceRecording } from './utils/use-voice-recording';
-import { useWindowSize } from '../../../../utils/dom';
+import { useWindowSize, useFocusOnLoad } from '../../../../utils/dom';
 import { PageContainer, Paper, BackgroundLayer, OneOfManyRhymes, PaperRedLine, FadeOutDetail, ResetButton, RapTitle, RecordButton, RhymeWordWrapper, RhymeWordInputWrapper, RhymeWordTyping, RhymeWord } from './styles.js';
 
 export function Rhymes() {
@@ -124,18 +124,4 @@ function renderBackground(size, refFocus) {
       }
     </BackgroundLayer>
   );
-}
-
-function useFocusOnLoad() {
-  const ref = useRef();
-
-  function refFocus() {
-    if (ref && ref.current && ref.current.focus) {
-      ref.current.focus();
-    }
-  }
-
-  useLayoutEffect(refFocus);
-
-  return { ref, refFocus };
 }

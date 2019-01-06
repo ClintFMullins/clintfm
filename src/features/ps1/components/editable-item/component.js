@@ -1,12 +1,14 @@
 import React from 'react';
 import { MarginBottom, LittleLine, EditableItemBottom, EditableItemBody, EditableItemRight, EditableItemLeft, EditableItemClose, EditableItemTop, EditableItemWrapper, VerticalCenter } from './styles';
 import { AddOne } from '../add-one/component';
-import { SEGMENT_DATA } from '../../utils/segments';
 import { ColorPicker } from '../color-picker/component';
 import { ACTION_ADD, ACTION_REMOVE, ACTION_MOVE, ACTION_SET_COLOR, ACTION_SET_COLOR_PICKER_OPEN, ACTION_SET_SEGMENT_PICKER_INDEX } from '../../reducer';
+import { getPreview } from '../../utils/transform';
 
-export function Editable({ color, segmentId, colorPickerOpen, dispatch, index }) {
-  const name = segmentId === 'space' ? '[space]' : SEGMENT_DATA[segmentId].example;
+export function Editable({ segment, dispatch, index }) {
+  const name = segment.id === 'space' ? '[space]' : getPreview(segment);
+
+  const { colorPickerOpen, color } = segment;
 
   function onAddClick() {
     dispatch({ type: ACTION_ADD, index: index + 1 });

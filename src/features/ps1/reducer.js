@@ -5,6 +5,7 @@ export const ACTION_REMOVE = 'remove';
 export const ACTION_MOVE = 'move';
 export const ACTION_SET_COLOR = 'setColor';
 export const ACTION_SET_SEGMENT = 'setSegment';
+export const ACTION_SET_SEGMENT_CUSTOM = 'setSegmentCustom';
 export const ACTION_SET_COLOR_PICKER_OPEN = 'setColorPickerOpen';
 export const ACTION_SET_SEGMENT_PICKER_INDEX = 'setSegmentPickerIndex';
 
@@ -48,6 +49,18 @@ export function reducer(state, action) {
         segmentPickerIndex: null,
       };
     }
+    case ACTION_SET_SEGMENT_CUSTOM: {
+      let segments = [ ...state.segments ];
+
+      segments[action.index].id = null;
+      segments[action.index].customText = action.customText;
+
+      return {
+        ...state,
+        segments,
+        segmentPickerIndex: null,
+      };
+    }
     case ACTION_SET_COLOR_PICKER_OPEN: {
       let segments = [ ...state.segments ];
 
@@ -56,7 +69,6 @@ export function reducer(state, action) {
       return { ...state, segments };
     }
     case ACTION_SET_SEGMENT_PICKER_INDEX: {
-      console.log(action)
       return { ...state, segmentPickerIndex: action.index };
     }
     default:
@@ -69,6 +81,7 @@ function getNewSegment() {
     color: 0,
     id: 'space',
     colorPickerOpen: false,
+    customText: '',
   }
 }
 
@@ -76,36 +89,48 @@ export const initialState = {
   segmentPickerIndex: null,
   segments: [
     {
-      color: 30,
+      color: 0,
       id: 'username',
     },
     {
-      color: 0,
+      color: 90,
+      id: 'space',
+    },
+    {
+      color: 275,
+      id: 'date',
+    },
+    {
+      color: 90,
+      id: 'space',
+    },
+    {
+      color: 275,
+      id: 'halfTime',
+    },
+    {
+      color: 90,
+      id: 'space',
+    },
+    {
+      color: 90,
+      id: 'pathToCurrentDirectory',
+    },
+    {
+      color: 90,
       id: 'space',
     },
     {
       color: 180,
-      id: 'date',
+      id: 'gitStatus',
     },
     {
-      color: 0,
+      color: 90,
       id: 'space',
     },
     {
-      color: 0,
-      id: 'fullTimeSeconds',
-    },
-    {
-      color: 0,
-      id: 'space',
-    },
-    {
-      color: 40,
-      id: 'pathToCurrentDirectory',
-    },
-    {
-      color: 0,
-      id: 'space',
+      color: 180,
+      customText: "👉🏻",
     },
   ],
 };
