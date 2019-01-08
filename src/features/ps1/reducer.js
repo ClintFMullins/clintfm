@@ -8,6 +8,7 @@ export const ACTION_SET_SEGMENT = 'setSegment';
 export const ACTION_SET_SEGMENT_CUSTOM = 'setSegmentCustom';
 export const ACTION_SET_COLOR_PICKER_OPEN = 'setColorPickerOpen';
 export const ACTION_SET_SEGMENT_PICKER_INDEX = 'setSegmentPickerIndex';
+export const ACTION_SET_SEGMENT_DRAGGING_INDEX = 'setSegmentDraggingIndex';
 
 export function reducer(state, action) {
   switch (action.type) {
@@ -71,6 +72,9 @@ export function reducer(state, action) {
     case ACTION_SET_SEGMENT_PICKER_INDEX: {
       return { ...state, segmentPickerIndex: action.index };
     }
+    case ACTION_SET_SEGMENT_DRAGGING_INDEX: {
+      return { ...state, draggingSegmentIndex: action.index };
+    }
     default:
       return state;
   }
@@ -87,6 +91,7 @@ function getNewSegment() {
 
 export const initialState = {
   segmentPickerIndex: null,
+  draggingSegmentIndex: null,
   segments: [
     {
       color: 0,

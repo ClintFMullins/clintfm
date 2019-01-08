@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React, { useReducer } from 'react';
+import React, { useReducer, useRef, useState, useLayoutEffect } from 'react';
 import { Editable } from './components/editable-item/component';
-import { PageWrapper, BeautifulWrapper, PresentZone, PageWrapperInner, SubduedWrapper, Spacer, EditZone, EditZoneInner, ButtonGetCode } from './styles';
+import { PageWrapper, BeautifulWrapper, PresentZone, PageWrapperInner, SubduedWrapper, Spacer, EditZone, EditZoneInner, ButtonGetCode, GrabbedItem } from './styles';
 import { AddOne } from './components/add-one/component';
 import { ACTION_ADD, reducer, initialState } from './reducer';
 import { PresentTextWrapper } from './styles';
@@ -9,11 +9,15 @@ import copy from 'copy-to-clipboard';
 import { getConvertedPS1, getPreview } from './utils/transform';
 import { ButtonWrapper } from './styles';
 import { SegmentPicker } from './components/segment-picker/component';
+import { Dragged } from './components/dragged/component';
 
 export function PS1Gen() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const { segments } = state;
+  const { segments, draggingSegmentIndex } = state;
+  const [isDragging, setIsDragging] = useState(false);
+  const referenceMap = useRef([]);
+  const [computedPositions, setComputedPositions] = useState(null);
+  const [closestIndex, setClosestIndex] = useState(null);
 
   function addFirst() {
     dispatch({ type: ACTION_ADD, index: 0 })
@@ -23,8 +27,41 @@ export function PS1Gen() {
     copy(getConvertedPS1(segments));
   }
 
+  function reportReference(index, reference) {
+    referenceMap.current[index] = reference;
+  }
+
+  useLayoutEffect(() => {
+    if (isDragging) {
+      if (computedPositions === null) {
+        setComputedPositions(referenceMap.current.map((childRef) => {
+          return childRef.getBoundingClientRect();
+        }));
+      }
+    } else {
+      setComputedPositions(null);
+    }
+  }, [isDragging])
+
   return (
     <>
+      <Dragged
+        dispatch={dispatch}
+        setIsDragging={setIsDragging}
+        computedPositions={computedPositions}
+        fromIndex={draggingSegmentIndex}
+        reportClosestIndex={setClosestIndex}
+      >
+        {draggingSegmentIndex !== null &&
+          <Editable
+            segment={segments[draggingSegmentIndex]}
+            dispatch={dispatch}
+            index={draggingSegmentIndex}
+            isBeingGrabbed={false}
+            hideAdd={true}
+          />
+        }
+      </Dragged>
       <PageWrapper>
         <PageWrapperInner>
           <SubduedWrapper>
@@ -38,6 +75,11 @@ export function PS1Gen() {
                       segment={segment}
                       dispatch={dispatch}
                       index={index}
+                      isBeingGrabbed={index === state.draggingSegmentIndex}
+                      reportReference={reportReference}
+                      isClosestIndex={closestIndex === index && closestIndex !== state.draggingSegmentIndex}
+                      isAfterIndex={(closestIndex !== state.draggingSegmentIndex) && (closestIndex === null ? null : closestIndex + 1)}
+                      hideAdd={state.draggingSegmentIndex !== null}
                     />
                   )
                 })}

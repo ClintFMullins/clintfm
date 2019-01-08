@@ -14,6 +14,8 @@ export const AddOneWrapper = styled.div`
   cursor: pointer;
   opacity: 0.6;
   box-sizing: content-box;
+
+  ${props => props.hide ? `visibility: hidden;` : ''}
   
   :hover {
     opacity: 1;

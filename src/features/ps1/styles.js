@@ -84,3 +84,8 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const GrabbedItem = styled.div`
+  position: fixed;
+  z-index: 30;
+`;
