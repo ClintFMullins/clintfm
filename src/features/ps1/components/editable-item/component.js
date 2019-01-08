@@ -74,7 +74,7 @@ export function Editable({ segment, dispatch, index, isBeingGrabbed, hideAdd, re
             <LittleLine />
           </EditableItemBottom>
         </EditableItemWrapper>
-        <AddOne hide={hideAdd} onClick={onAddClick} />
+        <AddOne hide={hideAdd && !isClosestIndex} onClick={onAddClick} />
       </VerticalCenter>
     </MarginBottom>
   );

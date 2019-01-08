@@ -77,8 +77,7 @@ export function PS1Gen() {
                       index={index}
                       isBeingGrabbed={index === state.draggingSegmentIndex}
                       reportReference={reportReference}
-                      isClosestIndex={closestIndex === index && closestIndex !== state.draggingSegmentIndex}
-                      isAfterIndex={(closestIndex !== state.draggingSegmentIndex) && (closestIndex === null ? null : closestIndex + 1)}
+                      isClosestIndex={closestIndex - 1 === index}
                       hideAdd={state.draggingSegmentIndex !== null}
                     />
                   )

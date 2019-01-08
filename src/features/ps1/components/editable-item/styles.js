@@ -9,8 +9,6 @@ export const EditableItemWrapper = styled.div`
   margin-right: 8px;
   background-color: rgba(248, 248, 255, 0.4);
   opacity: ${props => props.isBeingGrabbed ? 0.2 : 1};
-  transition: transform 800ms ease-out;
-  transform: translateX(${props => props.isClosestIndex ? '-20px' : props => props.isAfterIndex ? '20px' : '0'});
 `;
 
 export const EditableItemTop = styled.div`
