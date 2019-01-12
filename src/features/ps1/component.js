@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useReducer, useRef, useState, useLayoutEffect } from 'react';
 import { Editable } from './components/editable-item/component';
-import { PageWrapper, BeautifulWrapper, PresentZone, PageWrapperInner, SubduedWrapper, Spacer, EditZone, EditZoneInner, ButtonGetCode, GrabbedItem } from './styles';
+import { PageWrapper, BeautifulWrapper, PresentZone, PageWrapperInner, SubduedWrapper, Spacer, EditZone, EditZoneInner, ButtonGetCode } from './styles';
 import { AddOne } from './components/add-one/component';
 import { ACTION_ADD, reducer, initialState } from './reducer';
 import { PresentTextWrapper } from './styles';
@@ -71,7 +71,7 @@ export function PS1Gen() {
                 {segments.map((segment, index) => {
                   return (
                     <Editable
-                      key={Math.random()}
+                      key={index}
                       segment={segment}
                       dispatch={dispatch}
                       index={index}
@@ -88,9 +88,9 @@ export function PS1Gen() {
           <Spacer />
           <BeautifulWrapper>
             <PresentZone>
-              {segments.map((segment) => {
+              {segments.map((segment, index) => {
                 return (
-                  <PresentTextWrapper key={Math.random()} hue={segment.color}>
+                  <PresentTextWrapper key={index} hue={segment.color}>
                     {getPreview(segment)}
                   </PresentTextWrapper>
                 )

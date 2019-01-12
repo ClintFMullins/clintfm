@@ -46,11 +46,11 @@ export function Dragged({ dispatch, children, setIsDragging, computedPositions, 
   }
 
   function mouseUpHandler() {
+    dispatch({ type: ACTION_SET_SEGMENT_DRAGGING_INDEX, index: null })
+    dispatch({ type: ACTION_MOVE, fromIndex, toIndex: closestIndex })
     reportClosestIndex(null);
     setIsDragging(false);
     setMouseDown(false);
-    dispatch({ type: ACTION_SET_SEGMENT_DRAGGING_INDEX, index: null })
-    dispatch({ type: ACTION_MOVE, fromIndex, toIndex: closestIndex })
   }
 
   useEffect(() => {
