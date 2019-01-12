@@ -136,7 +136,7 @@ export const initialState = {
     },
     {
       color: 180,
-      customText: "👉🏻",
+      customText: "👉",
     },
     {
       color: 0,
