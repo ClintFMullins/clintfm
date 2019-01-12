@@ -11,7 +11,6 @@ export const ACTION_SET_SEGMENT_PICKER_INDEX = 'setSegmentPickerIndex';
 export const ACTION_SET_SEGMENT_DRAGGING_INDEX = 'setSegmentDraggingIndex';
 
 export function reducer(state, action) {
-  console.log('reducer pre', state, action);
   switch (action.type) {
     case ACTION_ADD: {
       let segments = [ ...state.segments ];

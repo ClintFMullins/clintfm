@@ -19,7 +19,7 @@ export function Projects() {
       <Route exact path='/play/creatures' component={Mating}/>
       <Route exact path='/play/sequence' component={MusicSequence}/>
       <Route exact path='/play/svg' component={tutorialSVG}/>
-      <Route exact path='/play/ps1' component={PS1Gen}/>
+      <Route exact path='/play/prompt' component={PS1Gen}/>
     </Switch>
   );
 }

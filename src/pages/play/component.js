@@ -9,6 +9,7 @@ import './styles.css';
 import { CreaturePreview } from '../../features/creature/preview-component';
 import { PreviewSequence } from '../projects/components/music/preview-component';
 import { useWindowSize } from '../../utils/dom';
+import { PreviewPrompt } from '../../features/ps1/preview-component';
 
 const SHOWCASE_DATA = [
   {
@@ -55,6 +56,11 @@ const SHOWCASE_DATA = [
       <PreviewSequence />
     ),
     title: 'sequence',
+  },
+  {
+    link: `/play/prompt`,
+    preview: () => <PreviewPrompt />,
+    title: 'prompt',
   },
 ];
 

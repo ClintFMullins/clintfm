@@ -38,10 +38,6 @@ export function getConvertedPS1(segments) {
 
     newBashSubstring += segment.customText || segmentData.code;
 
-    if (segment.customText) {
-      console.log(newBashSubstring)
-    }
-
     return bashString + newBashSubstring;
   }, 'export PS1="');
 

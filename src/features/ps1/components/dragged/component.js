@@ -46,11 +46,9 @@ export function Dragged({ dispatch, children, setIsDragging, computedPositions, 
   }
 
   function mouseUpHandler() {
-    console.log('yeah?')
     if (fromIndex === null || closestIndex === null) {
       return;
     }
-    console.log('yeah. fuck you')
 
     dispatch({ type: ACTION_SET_SEGMENT_DRAGGING_INDEX, index: null })
     dispatch({ type: ACTION_MOVE, fromIndex, toIndex: closestIndex })
