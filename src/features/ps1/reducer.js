@@ -138,5 +138,9 @@ export const initialState = {
       color: 180,
       customText: "👉🏻",
     },
+    {
+      color: 0,
+      id: 'space',
+    },
   ],
 };

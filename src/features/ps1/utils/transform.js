@@ -4,11 +4,13 @@ import { SEGMENT_DATA } from './segments';
 
 function getAnsiColorStart(hue) {
   // Must be in sync with color method.
-  return style.color.ansi.hsl(hue, 20, 50);
+  const styleFromLibrary = style.color.ansi.hsl(hue, 20, 50);
+  const colorNumber = styleFromLibrary.match(/\d+/)[0];
+  return `\\[\\e[${colorNumber}m\\]`;
 }
 
 function getColorEnd() {
-  return style.color.close;
+  return '\\[\\e[m\\]';
 }
 
 export function getConvertedPS1(segments) {
@@ -25,13 +27,13 @@ export function getConvertedPS1(segments) {
     let newBashSubstring = '';
 
     if (currentColor !== segment.color) {
-      currentColor = segment.color;
-
       if (currentColor !== null)  {
         newBashSubstring += getColorEnd();
       }
 
-      newBashSubstring += getAnsiColorStart(segment.color)
+      currentColor = segment.color;
+
+      newBashSubstring += getAnsiColorStart(segment.color);
     }
 
     newBashSubstring += segment.customText || segmentData.code;
