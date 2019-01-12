@@ -20,7 +20,7 @@ export function PS1Gen() {
   const [closestIndex, setClosestIndex] = useState(null);
 
   function addFirst() {
-    dispatch({ type: ACTION_ADD, index: 0 })
+    dispatch({ type: ACTION_ADD, index: 0 });
   }
 
   function copyCode() {
@@ -90,7 +90,7 @@ export function PS1Gen() {
             <PresentZone>
               {segments.map((segment, index) => {
                 return (
-                  <PresentTextWrapper key={index} hue={segment.color}>
+                  <PresentTextWrapper key={index} hue={segment ? segment.color : 0}>
                     {getPreview(segment)}
                   </PresentTextWrapper>
                 )
