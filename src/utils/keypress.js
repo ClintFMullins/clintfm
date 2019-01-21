@@ -14,10 +14,10 @@ export function useDirectionKeys({ handleUp, handleDown, handleLeft, handleRight
   }
 
   useEffect(() => {
-    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('keyup', onKeyDown);
 
     return () => {
-      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('keyup', onKeyDown);
     }
   })
 } 

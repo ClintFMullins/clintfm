@@ -60,7 +60,6 @@ export function reconcileGridSpaces(grid) {
         
         newGridItems.push(winningItem);
 
-        console.log(newGridItems);
         clonedGrid[rowIndex][cellIndex] = newGridItems;
       }
     }
