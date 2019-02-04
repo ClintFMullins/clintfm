@@ -8,7 +8,7 @@ import { Mating } from './components/mating/component';
 import { MusicSequence } from './components/music/component';
 import { tutorialSVG } from '../../features/svg/component';
 import { PS1Gen } from '../../features/ps1/component';
-import { LevelUp } from '../../features/level-up/component-2';
+import { LevelUp } from '../../features/level-up/component';
 
 export function Projects() {
   return (

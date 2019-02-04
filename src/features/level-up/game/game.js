@@ -20,7 +20,6 @@ export class Game {
     }
 
     this.reconcileGridSpaces();
-    this.moveMonsters();
   }
 
   attemptMovePlayer({ rowDir, cellDir }) {
@@ -40,8 +39,9 @@ export class Game {
     return true;
   }
 
-  moveMonsters() {
+  moveMonsters = () => {
     const monstersData = this.getGridItemPositions(MONSTER_TYPE);
+    const movesToMake = [];
 
     monstersData.forEach(({ item: monster, rowIndex, cellIndex }) => {
       const { rowDir, cellDir } = this.grid.convertDirectionToRowCell(monster.direction);
@@ -51,14 +51,16 @@ export class Game {
 
       const newDir = this.grid.getInverseDirection(newRowIndex, newCellIndex, monster.direction);
       
-      monster.moved = true;
       if (newDir) {
         monster.direction = newDir;
       }
 
-      this.grid.appendToCell(newRowIndex, newCellIndex, monster);
-      this.reconcileGridSpaces();
+      movesToMake.push({ newRowIndex, newCellIndex, monster });
       this.grid.setCell(rowIndex, cellIndex, []);
+    });
+
+    movesToMake.forEach(({ newRowIndex, newCellIndex, monster }) => {
+      this.grid.appendToCell(newRowIndex, newCellIndex, monster);
     });
   }
 

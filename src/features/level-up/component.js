@@ -1,9 +1,8 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { clamp } from '../../utils/numbers';
 import { useDirectionKeys } from '../../utils/keypress';
-import { getGridItemPositions } from './utils/grid';
-import { reducer, initialState, ACTION_MOVE, ACTION_UPDATE_GRID } from './utils/reducer';
+import { Game } from './game/game';
+import { LEVELS } from './game/levels';
 
 const GridWrapper = styled.div`
   display: flex;
@@ -73,84 +72,38 @@ const Monster = styled.div`
   }}
 `;
 
+const game = new Game();
+game.loadLevel(LEVELS[3]);
 
 export function LevelUp() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [grid, setGrid] = useState(game.grid.get());
+  const [canMove, setCanMove] = useState(true);
 
-  function playerMove(xDir, yDir) {
-    const playerPosition = getGridItemPositions(state.grid, 'player')[0];
-
-    dispatch({
-      type: ACTION_MOVE,
-      fromX: playerPosition.rowIndex,
-      fromY: playerPosition.cellIndex,
-      toX: clamp(playerPosition.rowIndex + xDir, 0, state.grid.length - 1),
-      toY: clamp(playerPosition.cellIndex + yDir, 0, state.grid[playerPosition.rowIndex].length -1),
-    });
-
-    const monsterCells = getGridItemPositions(state.grid, 'monster');
-
-    monsterCells.forEach((monsterPosition) => {
-      const { rowIndex, cellIndex } = monsterPosition;
-      const { direction } = state.grid[rowIndex][cellIndex][0];
-      let monsterDirCell = 0;
-      let monsterDirRow = 0;
-
-      if (direction === 'up') {
-        monsterDirCell = -1;
-      } else if (direction === 'down') {
-        monsterDirCell = 1;
-      } else if (direction === 'left') {
-        monsterDirRow = -1;
-      } else if (direction === 'right') {
-        monsterDirRow = 1;
-      }
-
-      const newRowIndex = rowIndex + monsterDirCell;
-      const newCellIndex = cellIndex + monsterDirRow;
-
-      const clampedRow = clamp(newRowIndex, 0, state.grid.length - 1);
-      const clampedCell = clamp(newCellIndex, 0, state.grid[rowIndex].length -1);
-
-      if (newRowIndex !== clampedRow) {
-        if (direction === 'right') {
-          state.grid[rowIndex][cellIndex][0].direction = 'left';
-        } else if (direction === 'left') {
-          state.grid[rowIndex][cellIndex][0].direction = 'right';
-        }
-      }
-
-      if (newCellIndex !== clampedCell) {
-        if (direction === 'up') {
-          state.grid[rowIndex][cellIndex][0].direction = 'down';
-        } else if (direction === 'down') {
-          state.grid[rowIndex][cellIndex][0].direction = 'up';
-        }
-      }
-
-      dispatch({
-        type: ACTION_MOVE,
-        fromX: rowIndex,
-        fromY: cellIndex,
-        toX: clampedRow,
-        toY: clampedCell,
-      });
-    });
-
-    dispatch({ type: ACTION_UPDATE_GRID });
+  function handleMovement(direction) {
+    if (!canMove) {
+      return;
+    }
+    setCanMove(false);
+    game.playerTurn(direction)
+    setGrid(game.grid.get());
+    setTimeout(() => {
+      game.moveMonsters()
+      setGrid(game.grid.get());
+      setCanMove(true);
+    }, 400);
   }
-  
-  const handleDown = () => playerMove(1, 0);
-  const handleUp = () => playerMove(-1, 0);
-  const handleLeft = () => playerMove(0, -1);
-  const handleRight = () => playerMove(0, 1);
+
+  const handleDown = () => handleMovement('down')
+  const handleUp = () => handleMovement('up')
+  const handleLeft = () => handleMovement('left')
+  const handleRight = () => handleMovement('right')
 
   useDirectionKeys({ handleDown, handleUp, handleLeft, handleRight });
 
   return (
     <GridWrapper>
       <Grid>
-        {state.grid.map((row, rowIndex) => (
+        {grid.map((row, rowIndex) => (
           <GridRow key={rowIndex}>
             {row.map((cell, cellIndex) => (
               <GridCell key={cellIndex}>
