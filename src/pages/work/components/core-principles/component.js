@@ -21,8 +21,6 @@ export function CorePrinciples() {
   return (
     <div className="core-strengths" style={{ minHeight: height }}>
       <div>
-        <div className="core-strengths-header">Core Principles</div>
-
         {Object.keys(SECTION_TITLE_TO_TEXT).map((title) => {
           return (
             <div className="wordy-section" key={title}>

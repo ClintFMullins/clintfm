@@ -14,6 +14,9 @@ function simpleHandlePlural(str, num) {
   return `${str}${num === 1 ? '' : 's' }`
 }
 
+export const timeSpentProgramming = Date.now() - getDateFromYearMonth(2009, 6);
+export const timeAsProfessional = Date.now() - getDateFromYearMonth(2013, 8);
+
 export const TECH_SKILLS = {
   'Javascript': {
     timeSpent: Date.now() - getDateFromYearMonth(2011, 6),

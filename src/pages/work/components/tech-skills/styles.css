@@ -3,6 +3,9 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
+  width: 600px;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
 .skill-container {
@@ -10,12 +13,9 @@
   justify-content: space-between;
   padding: 10px 20px;
   box-shadow: 0 0 2px rgba(240, 239, 233, 0.8);
-  margin-bottom: 4px;
   border-radius: 3px;
-}
-
-.skill-container-inactive {
-  opacity: 0.4;
+  margin: 0 10px 10px 0;
+  border: solid 2px gray;
 }
 
 .skill-name {
@@ -25,4 +25,13 @@
 
 .skill-time {
   font-size: 15px;
+}
+
+.tech-skills-skill-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.core-strengths-explain {
+  margin-bottom: 10px;
 }

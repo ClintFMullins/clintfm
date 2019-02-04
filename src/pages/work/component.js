@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CorePrinciples } from './components/core-principles/component';
 import { TechSkills } from './components/tech-skills/component';
 import './styles.css';
@@ -6,9 +6,31 @@ import { useWindowSize } from '../../utils/dom';
 
 export function Work() {
   const { height } = useWindowSize();
+  const [color, setColor] = useState(window.scrollY);
+  const timeoutId = useRef(null);
+
+  function doSomething(scrollPosition) {
+    setColor(scrollPosition % 360);
+  }
+
+  function onScroll() {
+      if (timeoutId.current) {
+        clearTimeout(timeoutId.current);
+      }
+
+      timeoutId.current = setTimeout(function() {
+        doSomething(window.scrollY);
+      }, 100);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+
+    return  () => window.removeEventListener('scroll', onScroll);
+  });
 
   return (
-    <div className="work-wrapper">
+    <div className="work-wrapper" style={{ background: `hsl(${color}, 80%, 93%)`, transition: 'background 400ms linear' }}>
       <div className="work">
         <div className="intro" style={{ height }}>
           <div>
