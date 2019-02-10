@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { initializeGrid, getColorAdjustedGrid, paintGrid } from './utils/grid';
+import { useInterval } from '../../utils/render-interval';
 
 export function Grid(props) {
   const canvas = useRef();
@@ -12,19 +13,13 @@ export function Grid(props) {
     grid.current = initializeGrid(rowCount, columnCount);
   }, [props.width, props.height]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const newGrid = getColorAdjustedGrid(grid.current, props.velocity);
-      const ctx = canvas.current.getContext('2d');
-      paintGrid(ctx, newGrid, props.squareSize);
+  useInterval(() => {
+    const newGrid = getColorAdjustedGrid(grid.current, props.velocity);
+    const ctx = canvas.current.getContext('2d');
+    paintGrid(ctx, newGrid, props.squareSize);
 
-      grid.current = newGrid;
-    }, 50);
-
-    return () => {
-      clearInterval(interval);
-    }
-  });
+    grid.current = newGrid;
+  }, 50);
 
   const getColumnRow = (event) => ({
     columnIndex: Math.floor((event.nativeEvent.offsetX * columnCount) / props.width),

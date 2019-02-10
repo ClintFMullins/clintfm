@@ -1,22 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-// TODO: Why does this set up the interval twice?
-export function useRenderInterval(intervalMs, valueFunc, shouldSetValue = true) {
-  const [value, setValue] = useState(valueFunc());
+export function useInterval(callback, delay) {
+  const savedCallback = useRef();
 
+  // Remember the latest callback.
   useEffect(() => {
-    if (!shouldSetValue) {
-      return;
+    savedCallback.current = callback;
+  });
+
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
     }
-
-    const interval = setInterval(() => {
-      setValue(valueFunc());
-    }, intervalMs);
-
-    return () => {
-      clearInterval(interval);
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
     }
-  }, [shouldSetValue]);
-
-  return value;
+  }, [delay]);
 }

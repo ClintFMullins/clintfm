@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { useRenderInterval } from '../../utils/render-interval';
+import { useInterval } from '../../utils/render-interval';
 import { generateCreatureData } from './utils/creature-generation';
 import { Creature } from './component';
 
 export function CreaturePreview({ size }) {
   const [userIsHovering, setUserIsHovering] = useState(false);
-  const updatingCreatureData = useRenderInterval(200, generateCreatureData, userIsHovering);
+  const [creatureData, setCreatureData] = useState(generateCreatureData());
+
+  useInterval(() => {
+    setCreatureData(generateCreatureData());
+  }, userIsHovering ? 300 : null);
 
   return (
     <div
@@ -14,7 +18,7 @@ export function CreaturePreview({ size }) {
     >
       <Creature
         size={size}
-        creatureData={updatingCreatureData}
+        creatureData={creatureData}
       />
     </div>
   );

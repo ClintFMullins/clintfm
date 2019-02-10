@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RhymesPreview, RhymeLine } from './preview-styles';
-import { useRenderInterval } from '../../../../utils/render-interval';
+import { useInterval } from '../../../../utils/render-interval';
 
-let numberOfLines = 3;
-function getNumberOfLines() {
+function getNumberOfLines(numberOfLines) {
   numberOfLines++;
 
-  if (numberOfLines > 15) {
+  if (numberOfLines > 18) {
     numberOfLines = 3;
   }
 
@@ -14,7 +13,11 @@ function getNumberOfLines() {
 }
 
 export function PreviewRhymes() {
-  const numberOfLines = useRenderInterval(1000, getNumberOfLines)
+  const [numberOfLines, setNumberOfLines] = useState(3);
+
+  useInterval(() => {
+    setNumberOfLines(getNumberOfLines(numberOfLines));
+  }, 500);
 
   return (
     <RhymesPreview>

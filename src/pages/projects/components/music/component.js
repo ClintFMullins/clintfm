@@ -4,6 +4,7 @@ import * as cn from 'classnames';
 import './styles.css';
 import { MusicDetailPicker } from './components/music-detail-picker/component';
 import { SheetMusic } from './utils/sheet-music';
+import { useInterval } from '../../../../utils/render-interval';
 
 let audioContext;
 try {
@@ -155,17 +156,16 @@ export function MusicSequence() {
 
     musicSequences.current = newMusicSequences;
 
-    const visualInterval = setInterval(() => {
-      dispatch({type: ACTION_INCREMENT_SEQUENCE });
-    }, (60 / state.tempo) * 1000);
-
     return () => {
-      clearInterval(visualInterval);
       musicSequences.current.forEach((musicSequence) => {
         musicSequence.stop();
       });
     };
   }, [sequenceTrigger])
+
+  useInterval(() => {
+    dispatch({type: ACTION_INCREMENT_SEQUENCE });
+  }, (60 / state.tempo) * 1000);
 
   function changeNoteSound(note) {
     dispatch({

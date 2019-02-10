@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useInterval } from './render-interval';
 
 const DAY_SCALE = 24;
 const DAY_SCALE_HALF = DAY_SCALE / 2;
@@ -16,19 +17,9 @@ export function getDayNightDetails() {
 export function useChangingDayNightDetails(isActive) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  function moveTimeForward() {
+  useInterval(() => {
     setCurrentTime(new Date(currentTime.getTime() + 1000000));
-  }
-
-  useEffect(() => {
-    if (isActive) {
-      const interval = setTimeout(moveTimeForward, 250);
-
-      return () => {
-        clearInterval(interval);
-      }
-    }
-  });
+  }, isActive ? 250 : null);
 
   useEffect(() => {
     if (!isActive) {

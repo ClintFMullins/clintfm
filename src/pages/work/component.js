@@ -4,13 +4,17 @@ import { TechSkills } from './components/tech-skills/component';
 import './styles.css';
 import { useWindowSize } from '../../utils/dom';
 
+const SCALE_FACTOR = 15;
+
 export function Work() {
   const { height } = useWindowSize();
   const [color, setColor] = useState(window.scrollY);
   const timeoutId = useRef(null);
 
-  function doSomething(scrollPosition) {
-    setColor(scrollPosition % 360);
+  function throttledOnScroll(scrollPosition) {
+    const newHue = (scrollPosition / SCALE_FACTOR) % 360;
+
+    setColor(newHue);
   }
 
   function onScroll() {
@@ -19,14 +23,14 @@ export function Work() {
       }
 
       timeoutId.current = setTimeout(function() {
-        doSomething(window.scrollY);
-      }, 100);
+        throttledOnScroll(window.scrollY);
+      }, 50);
   }
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
 
-    return  () => window.removeEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   });
 
   return (
