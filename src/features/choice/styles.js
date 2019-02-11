@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -12,9 +13,10 @@ export const ChoiceContainer = styled.div`
   opacity: 0.7;
   text-decoration: none;
   color: #626567;
+  z-index: 9999999999999;
 `
 
-export const HomepageLink = styled(Link)`
+export const HomepageLink = styled(({ isLeft, ...rest }) => <Link {...rest} />)`
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -50,7 +52,7 @@ export const HomepageLink = styled(Link)`
     border-radius: 3px;
     box-shadow: rgba(235, 213, 90, 0.2) 0px 0px 10px 1px;
   }
-`
+`;
 
 export const Profile = styled.div`
   font-family: 'Pacifico', cursive;

@@ -10,6 +10,7 @@ import { CreaturePreview } from '../../features/creature/preview-component';
 import { PreviewSequence } from '../projects/components/music/preview-component';
 import { useWindowSize } from '../../utils/dom';
 import { PreviewPrompt } from '../../features/ps1/preview-component';
+import { PreviewStoryTime } from '../../features/storytime/preview-component';
 
 const SHOWCASE_DATA = [
   {
@@ -61,6 +62,11 @@ const SHOWCASE_DATA = [
     link: `/play/prompt`,
     preview: () => <PreviewPrompt />,
     title: 'prompt',
+  },
+  {
+    link: `/play/story`,
+    preview: () => <PreviewStoryTime />,
+    title: 'story',
   },
 ];
 

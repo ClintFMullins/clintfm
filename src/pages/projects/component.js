@@ -9,6 +9,7 @@ import { MusicSequence } from './components/music/component';
 import { tutorialSVG } from '../../features/svg/component';
 import { PS1Gen } from '../../features/ps1/component';
 import { LevelUp } from '../../features/level-up/component';
+import { StoryTime } from '../../features/storytime/component';
 
 export function Projects() {
   return (
@@ -22,6 +23,7 @@ export function Projects() {
       <Route exact path='/play/svg' component={tutorialSVG}/>
       <Route exact path='/play/prompt' component={PS1Gen}/>
       <Route exact path='/play/level' component={LevelUp}/>
+      <Route exact path='/play/story' component={StoryTime}/>
     </Switch>
   );
 }
