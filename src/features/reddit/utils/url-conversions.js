@@ -10,14 +10,14 @@ function getId(url) {
 }
 
 function getYoutubeEmbed(url) {
-  return `http://www.youtube.com/embed/${getId(url)}'`
+  return `//www.youtube.com/embed/${getId(url)}'`
 }
 
 function getClipsEmbed(url) {
   const splitUrl = url.split('/');
   const clipSlug = splitUrl[splitUrl.length - 1];
 
-  return `http://clips.twitch.tv/embed?clip=${clipSlug}`;
+  return `//clips.twitch.tv/embed?clip=${clipSlug}`;
 }
 
 export function convertPreviewUrl(url) {
