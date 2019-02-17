@@ -5,6 +5,7 @@ import { PostComments } from './components/post-comments/component';
 import styled from 'styled-components';
 import { useSubredditData } from './utils/reddit-fetch';
 import { useDirectionKeys } from '../../utils/keypress';
+import { getUrlParam } from '../../utils/url';
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -17,9 +18,15 @@ const PageLayout = styled.div`
   height: calc(100% - ${HEADER_HEIGHT}px);
 `;
 
+const DEFAULT_SUBREDDIT = 'videos';
+
 export function Reddit() {
+  const [subreddit] = useState(() => {
+    return getUrlParam('r') || DEFAULT_SUBREDDIT;
+  });
+
   const subredditData = useSubredditData({
-    subreddit: 'reactjs',
+    subreddit,
   });
   const [postIndex, setPostIndex] = useState(0);
 
@@ -40,7 +47,7 @@ export function Reddit() {
       <Header />
       <PageLayout>
         <PostContent post={post} />
-        <PostComments post={post} />
+        <PostComments post={post} subreddit={subreddit}/>
       </PageLayout>
     </PageWrapper>
   )

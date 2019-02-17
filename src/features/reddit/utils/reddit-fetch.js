@@ -3,14 +3,10 @@ import { useFetchJson } from "../../../utils/fetch";
 export function useSubredditData({ subreddit }) {
   return useFetchJson(`https://www.reddit.com/r/${subreddit}/hot.json`, !!subreddit);
 }
-export function useCommentData({ post }) {
-  let url = null;
+export function useCommentData({ subreddit, post }) {
+  let postId = post && post.data && post.data.id;
 
-  if (post && post.data && post.data.url) {
-    url = post.data.url;
-  }
-
-  const fetchedData = useFetchJson(`${url}.json`, !!url);
+  const fetchedData = useFetchJson(`https://www.reddit.com/r/${subreddit}/comments/${postId}.json`, !!postId);
 
   if (!fetchedData) {
     return null;
