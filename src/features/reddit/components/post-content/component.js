@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-import { convertPreviewUrl } from '../../utils/url-conversions';
+import { EmbeddedContent } from '../embedded/component';
 
 const ContentWrapper = styled.div`
   background: lightgrey;
@@ -9,6 +9,12 @@ const ContentWrapper = styled.div`
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+`;
+
+const Title = styled.div`
+  font-size: 1.6rem;
+  font-weight: bold;
 `;
 
 export function PostContent({ post }) {
@@ -25,21 +31,13 @@ export function PostContent({ post }) {
   return (
     <ContentWrapper>
       <div>
-        {title}
+        <Title>{title}</Title>
         <br />
         <ReactMarkdown>
           {selftext}
         </ReactMarkdown>
       </div>
-      <iframe
-        src={convertPreviewUrl(url)}
-        title="content"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+      <EmbeddedContent url={url} />
     </ContentWrapper>
   )
 }

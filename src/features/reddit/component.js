@@ -18,7 +18,7 @@ const PageLayout = styled.div`
   height: calc(100% - ${HEADER_HEIGHT}px);
 `;
 
-const DEFAULT_SUBREDDIT = 'videos';
+const DEFAULT_SUBREDDIT = 'popular';
 
 export function Reddit() {
   const [subreddit] = useState(() => {
@@ -44,7 +44,7 @@ export function Reddit() {
 
   return (
     <PageWrapper>
-      <Header />
+      <Header subreddit={subreddit} />
       <PageLayout>
         <PostContent post={post} />
         <PostComments post={post} subreddit={subreddit}/>

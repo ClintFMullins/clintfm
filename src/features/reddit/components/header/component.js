@@ -9,8 +9,10 @@ const HeaderWrapper = styled.div`
   width: 100%;
 `;
 
-export function Header() {
+export function Header({ subreddit }) {
   return (
-    <HeaderWrapper />
+    <HeaderWrapper>
+      {subreddit}
+    </HeaderWrapper>
   )
 }
