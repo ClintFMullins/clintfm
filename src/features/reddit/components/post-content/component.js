@@ -2,14 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { EmbeddedContent } from '../embedded/component';
+import { BACKGROUND, FOREGROUND } from '../../utils/color-themes';
 
 const ContentWrapper = styled.div`
-  background: lightgrey;
-  flex-basis: 50%;
+  background: ${BACKGROUND};
+  flex-basis: 60%;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  color: ${FOREGROUND}
 `;
 
 const Title = styled.div`

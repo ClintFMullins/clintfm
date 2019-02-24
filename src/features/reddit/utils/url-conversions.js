@@ -10,7 +10,7 @@ function getId(url) {
 }
 
 function getYoutubeEmbed(url) {
-  return `//www.youtube.com/embed/${getId(url)}'`
+  return `//www.youtube.com/embed/${getId(url)}`
 }
 
 function getClipsEmbed(url) {
@@ -25,6 +25,8 @@ export function convertPreviewUrl(url) {
     return getYoutubeEmbed(url);
   } else if (url.includes('clips.twitch.tv')) {
     return getClipsEmbed(url);
+  } else if (url.includes('reddit.com')) {
+    return null;
   }
 
   return url;

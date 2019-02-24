@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useSubredditData } from './utils/reddit-fetch';
 import { useDirectionKeys } from '../../utils/keypress';
 import { getUrlParam } from '../../utils/url';
+import './styles.css';
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -18,7 +19,7 @@ const PageLayout = styled.div`
   height: calc(100% - ${HEADER_HEIGHT}px);
 `;
 
-const DEFAULT_SUBREDDIT = 'popular';
+const DEFAULT_SUBREDDIT = 'videos';
 
 export function Reddit() {
   const [subreddit] = useState(() => {
