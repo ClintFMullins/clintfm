@@ -5,6 +5,9 @@ export function useSubredditData({ subreddit }) {
 }
 export function useCommentData({ subreddit, post }) {
   let postId = post && post.data && post.data.id;
+  if (!postId) {
+    return null;
+  }
 
   const fetchedData = useFetchJson(`https://www.reddit.com/r/${subreddit}/comments/${postId}.json`, !!postId);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header, HEADER_HEIGHT } from './components/header/component';
 import { PostContent } from './components/post-content/component';
 import { PostComments } from './components/post-comments/component';
@@ -7,6 +7,7 @@ import { useSubredditData } from './utils/reddit-fetch';
 import { useDirectionKeys } from '../../utils/keypress';
 import { getUrlParam } from '../../utils/url';
 import './styles.css';
+import { withRouter } from 'react-router-dom';
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -21,15 +22,17 @@ const PageLayout = styled.div`
 
 const DEFAULT_SUBREDDIT = 'videos';
 
-export function Reddit() {
-  const [subreddit] = useState(() => {
-    return getUrlParam('r') || DEFAULT_SUBREDDIT;
-  });
+function RedditInner(props) {
+  const subreddit = getUrlParam('r', props.location.search) || DEFAULT_SUBREDDIT;
+  const [postIndex, setPostIndex] = useState(0);
+
+  useEffect(() => {
+    setPostIndex(0);
+  }, [subreddit]);
 
   const subredditData = useSubredditData({
     subreddit,
   });
-  const [postIndex, setPostIndex] = useState(0);
 
   function handleLeft() {
     setPostIndex((prevPostIndex) => prevPostIndex - 1);
@@ -42,10 +45,11 @@ export function Reddit() {
   useDirectionKeys({ handleLeft, handleRight });
 
   const post = subredditData ? subredditData.data.children[postIndex] : null;
+  const currentSubreddit = post && post.data && post.data.subreddit;
 
   return (
     <PageWrapper>
-      <Header subreddit={subreddit} />
+      <Header subreddit={subreddit} currentSubreddit={currentSubreddit} />
       <PageLayout>
         <PostContent post={post} />
         <PostComments post={post} subreddit={subreddit}/>
@@ -53,3 +57,5 @@ export function Reddit() {
     </PageWrapper>
   )
 }
+
+export const Reddit = withRouter(RedditInner)

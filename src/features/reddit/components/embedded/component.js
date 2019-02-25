@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertPreviewUrl } from '../../utils/url-conversions';
+import { getParsedContent } from '../../utils/url-conversions';
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
@@ -9,24 +9,15 @@ const ContentWrapper = styled.div`
 `;
 
 export function EmbeddedContent({ url }) {
-  const parsedUrl = convertPreviewUrl(url);
+  const parsedContent = getParsedContent(url);
 
-  if (!parsedUrl) {
+  if (!parsedContent) {
     return null;
   }
 
   return (
     <ContentWrapper>
-      <iframe
-        sandbox
-        src={parsedUrl}
-        title="content"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+      {parsedContent}
     </ContentWrapper>
   )
 }

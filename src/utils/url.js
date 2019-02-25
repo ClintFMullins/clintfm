@@ -1,6 +1,6 @@
 // This definitely doesn't cover all cases, but it covers mine right now.
-export function getUrlParam(paramName) {
-  const paramString = window.location.href.split('?')[1];
+export function getUrlParam(paramName, urlPartial) {
+  const paramString = urlPartial.split('?')[1];
   if (!paramString) {
     return undefined;
   }

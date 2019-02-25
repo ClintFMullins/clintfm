@@ -10,7 +10,7 @@ const CommentsWrapper = styled.div`
   overflow: scroll;
   overflow-y: scroll;
   color: ${FOREGROUND};
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
 `;
 
 const Comment = styled.div`
@@ -31,15 +31,9 @@ const CommentInner = styled.div`
 
 const CommentAuthor = styled.div`
   position: absolute;
-  top: -8px;
+  top: -7px;
   left: 8px;
   font-size: 11px;
-`;
-
-const Title = styled.div`
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
 `;
 
 export function PostComments({ subreddit, post }) {
@@ -48,7 +42,6 @@ export function PostComments({ subreddit, post }) {
   if (!comments) {
     return (
       <CommentsWrapper>
-        <Title>Comments</Title>
         LOADING
       </CommentsWrapper>
     )
@@ -56,22 +49,21 @@ export function PostComments({ subreddit, post }) {
 
   return (
     <CommentsWrapper>
-      <Title>Comments</Title>
       {comments.map((commentData) => {
-        return <CommentComponent data={commentData.data} isTop={true} />
+        return <CommentComponent data={commentData.data} isTop={true} key={commentData.data.id}/>
       })}
     </CommentsWrapper>
   )
 }
 
 function CommentComponent({ data, isTop, isLast }) {
-  const { id, body, author, replies } = data;
+  const { body, author, replies } = data;
   const moreComments = replies && replies.data && replies.data.children;
   const filteredComments = moreComments && moreComments.filter((comment) => comment.kind === 't1');
   const commentMargin = (isTop) ? 1.5 : 0;
 
   return (
-    <Comment key={id} marginBottom={commentMargin} isLast={isLast}>
+    <Comment marginBottom={commentMargin} isLast={isLast}>
       <CommentAuthor>{author}</CommentAuthor>
       <CommentInner>
         <ReactMarkdown>
@@ -82,7 +74,7 @@ function CommentComponent({ data, isTop, isLast }) {
         filteredComments.map((comment, index) => {
           const isLast = index === filteredComments.length - 1;
 
-          return <CommentComponent data={comment.data} isLast={isLast} />
+          return <CommentComponent data={comment.data} isLast={isLast} key={comment.data.id} />
         })
       }
     </Comment>
