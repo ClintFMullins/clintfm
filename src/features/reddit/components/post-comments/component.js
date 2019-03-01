@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useCommentData } from '../../utils/reddit-fetch';
 import ReactMarkdown from 'react-markdown';
 import { DARK_BACKGROUND, FOREGROUND } from '../../utils/color-themes';
@@ -11,6 +11,11 @@ const CommentsWrapper = styled.div`
   overflow-y: scroll;
   color: ${FOREGROUND};
   padding: 0 1rem 1rem 1rem;
+`;
+
+const LoadingWrapper = styled.div`
+  background: ${DARK_BACKGROUND};
+  flex-basis: 40%;
 `;
 
 const Comment = styled.div`
@@ -27,6 +32,7 @@ const Comment = styled.div`
 
 const CommentInner = styled.div`
   padding-bottom: 0.5rem;
+  overflow-x: scroll;
 `;
 
 const CommentAuthor = styled.div`
@@ -36,14 +42,28 @@ const CommentAuthor = styled.div`
   font-size: 11px;
 `;
 
+const loadingAnimation = keyframes`
+  0%{background-position:50% 0%}
+  50%{background-position:51% 100%}
+  100%{background-position:50% 0%}
+`;
+
+const Loading = styled.div`
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, #ffffff00, #6e96d91f, #ffffff00);
+  background-size: 600% 600%;
+  animation: ${loadingAnimation} 2s ease infinite;
+`;
+
 export function PostComments({ subreddit, post }) {
   const comments = useCommentData({ subreddit, post });
 
   if (!comments) {
     return (
-      <CommentsWrapper>
-        LOADING
-      </CommentsWrapper>
+      <LoadingWrapper>
+        <Loading /> 
+      </LoadingWrapper>
     )
   }
 
