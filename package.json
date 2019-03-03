@@ -32,8 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.9.4",
-    "gh-pages": "^2.0.1"
+    "babel-plugin-styled-components": "^1.9.4"
   },
   "homepage": "http://clintfmullins.github.io/clintfm"
 }
