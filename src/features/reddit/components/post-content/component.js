@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { EmbeddedContent } from '../embedded/component';
 import { BACKGROUND, FOREGROUND } from '../../utils/color-themes';
