@@ -7,10 +7,16 @@ import { SheetMusic } from './utils/sheet-music';
 import { useInterval } from '../../../../utils/render-interval';
 
 let audioContext;
-try {
-  audioContext = new AudioContext();
-} catch {
-  console.warn('Must use chrome for AudioContext');
+function getAudioContext() {
+  if (!audioContext) {
+    try {
+      audioContext = new AudioContext();
+    } catch {
+      console.warn('Must use chrome for AudioContext');
+    }
+  }
+
+  return audioContext;
 }
 
 function silence(duration = 'q') {
@@ -146,8 +152,10 @@ export function MusicSequence() {
         return shouldPlayNote ? state.sequenceNotes[index] : silence();
       })
 
-      if (audioContext) {
-        const seq = new TinyMusic.Sequence(audioContext, state.tempo, processedSequence);
+      const audio = getAudioContext();
+
+      if (audio) {
+        const seq = new TinyMusic.Sequence(audio, state.tempo, processedSequence);
         seq.createCustomWave([-0.8, 1, 0.8, 0.8, -0.8, -0.8, -1]);
         seq.play();
         newMusicSequences.push(seq);
