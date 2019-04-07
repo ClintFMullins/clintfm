@@ -58,7 +58,7 @@ export function Rhymes() {
 
   useEffect(() => {
     recordedWords.forEach(queueWord);
-  }, recordedWords);
+  }, [recordedWords]);
 
   function renderRhyme(word, index) {
     return (

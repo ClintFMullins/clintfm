@@ -23,7 +23,7 @@ const PageLayout = styled.div`
 const DEFAULT_SUBREDDIT = 'videos';
 
 function RedditInner(props) {
-  const subreddit = getUrlParam('r', props.location.search) || DEFAULT_SUBREDDIT;
+  const [subreddit, setSubreddit] = useState(getUrlParam('r', props.location.search) || DEFAULT_SUBREDDIT)
   const [postIndex, setPostIndex] = useState(0);
 
   useEffect(() => {
@@ -35,21 +35,32 @@ function RedditInner(props) {
   });
 
   function handleLeft() {
-    setPostIndex((prevPostIndex) => prevPostIndex - 1);
+    setPostIndex((prevPostIndex) => Math.max(prevPostIndex - 1, 0));
   }
 
   function handleRight() {
     setPostIndex((prevPostIndex) => prevPostIndex + 1);
   }
 
+  function addSubreddit(newSubreddit) {
+    setSubreddit(`${subreddit}+${newSubreddit}`);
+  }
+
   useDirectionKeys({ handleLeft, handleRight });
 
-  const post = subredditData ? subredditData.data.children[postIndex] : null;
+  const post = subredditData && subredditData.data ? subredditData.data.children[postIndex] : null;
   const currentSubreddit = post && post.data && post.data.subreddit;
 
   return (
     <PageWrapper>
-      <Header subreddit={subreddit} currentSubreddit={currentSubreddit} />
+      <Header
+        subreddit={subreddit}
+        currentSubreddit={currentSubreddit}
+        handlePrev={handleLeft}
+        handleNext={handleRight}
+        addSubreddit={addSubreddit}
+        replaceSubreddit={setSubreddit}
+      />
       <PageLayout>
         <PostContent post={post} />
         <PostComments post={post} subreddit={subreddit}/>

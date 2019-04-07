@@ -11,18 +11,9 @@ import { PreviewSequence } from '../projects/components/music/preview-component'
 import { useWindowSize } from '../../utils/dom';
 import { PreviewPrompt } from '../../features/ps1/preview-component';
 import { PreviewStoryTime } from '../../features/storytime/preview-component';
+import { PreviewReddit } from '../../features/reddit/preview-component';
 
 const SHOWCASE_DATA = [
-  {
-    link: `/play/current-time`,
-    preview: (size) => <TimeWidget size={size} isRound={true} />,
-    title: 'now',
-  },
-  {
-    link: `/play/cta`,
-    preview: () => <PreviewCTA />,
-    title: 'click',
-  },
   {
     link: `/play/rhymes`,
     preview: () => <PreviewRhymes />,
@@ -43,6 +34,11 @@ const SHOWCASE_DATA = [
     title: 'lava',
   },
   {
+    link: `/play/current-time`,
+    preview: (size) => <TimeWidget size={size} isRound={true} />,
+    title: 'now',
+  },
+  {
     link: `/play/creatures`,
     preview: (size) => (
       <div className="preview-wrapper">
@@ -50,6 +46,16 @@ const SHOWCASE_DATA = [
       </div>
     ),
     title: 'creatures',
+  },
+  {
+    link: `/play/story`,
+    preview: () => <PreviewStoryTime />,
+    title: 'story',
+  },
+  {
+    link: `/play/cta`,
+    preview: () => <PreviewCTA />,
+    title: 'click',
   },
   {
     link: `/play/sequence`,
@@ -64,9 +70,9 @@ const SHOWCASE_DATA = [
     title: 'prompt',
   },
   {
-    link: `/play/story`,
-    preview: () => <PreviewStoryTime />,
-    title: 'story',
+    link: `/play/reddit`,
+    preview: () => <PreviewReddit />,
+    title: 'consume',
   },
 ];
 
