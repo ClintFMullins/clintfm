@@ -1,10 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CorePrinciples } from './components/core-principles/component';
 import { TechSkills } from './components/tech-skills/component';
+import styled from 'styled-components';
 import './styles.css';
 import { useWindowSize } from '../../utils/dom';
 
 const SCALE_FACTOR = 15;
+
+const SubtleLink = styled.a`
+  color: grey;
+  font-weight: 600;
+`;
 
 export function Work() {
   const { height } = useWindowSize();
@@ -52,6 +58,23 @@ export function Work() {
 
         <CorePrinciples />
         <TechSkills />
+
+        <div className="explanation-wrapper" style={{ minHeight: height }}>
+          <div>
+            <div className="tech-skills-skill-wrapper">
+              <h2>Why is this page so simple? Where's the flash?</h2>
+              <p>
+                Good question! My goal here is to give you a quick overview of my work philosophy and toolset.
+                If that answer leaves you wanting, here are some options for you:
+                <ul>
+                  <li>If you'd like some flash check out the <SubtleLink href="/play">play page</SubtleLink> for fun experiments of mine</li>
+                  <li>If you'd like to see more professional experience, <SubtleLink rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/clint-mullins-5651a161">LinkedIn</SubtleLink> is the place to be</li>
+                  <li>If you'd just like to reach out, feel free to contact me at&nbsp;<SubtleLink href="mailto:clintfmullins@gmail.com">clintfmullins@gmail.com</SubtleLink> </li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

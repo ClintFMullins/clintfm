@@ -8,6 +8,16 @@
   margin: 0 auto;
 }
 
+.explanation-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  width: 660px;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
 .skill-container {
   display: flex;
   justify-content: space-between;
