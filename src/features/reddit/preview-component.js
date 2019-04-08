@@ -1,5 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const eyeballMoving = keyframes`
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-15%);
+  }
+  75% {
+    transform: translateX(15%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+`;
 
 const Wrapper = styled.div`
   background: white;
@@ -19,6 +34,12 @@ const EyeOut = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 500ms linear;
+  animation: ${eyeballMoving} 5s ease infinite;
+
+  &:hover {
+    animation: none;
+  }
 `;
 
 const EyeIn = styled.div`
@@ -29,7 +50,7 @@ const EyeIn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 800ms transform linear;
+  transition: 800ms transform ease-in-out;
   transform: scale(1);
 
   &:hover {
