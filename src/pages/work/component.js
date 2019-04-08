@@ -62,12 +62,12 @@ export function Work() {
         <div className="explanation-wrapper" style={{ minHeight: height }}>
           <div>
             <div className="tech-skills-skill-wrapper">
-              <h2>Why is this page so simple? Where's the flash?</h2>
+              <h2>Why is this page so simple? Where's the pizzazz?</h2>
               <p>
                 Good question! My goal here is to give you a quick overview of my work philosophy and toolset.
                 If that answer leaves you wanting, here are some options for you:
                 <ul>
-                  <li>If you'd like some flash check out the <SubtleLink href="/play">play page</SubtleLink> for fun experiments of mine</li>
+                  <li>If you'd like some pizzazz check out the <SubtleLink href="/play">play page</SubtleLink> for fun experiments of mine</li>
                   <li>If you'd like to see more professional experience, <SubtleLink rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/clint-mullins-5651a161">LinkedIn</SubtleLink> is the place to be</li>
                   <li>If you'd just like to reach out, feel free to contact me at&nbsp;<SubtleLink href="mailto:clintfmullins@gmail.com">clintfmullins@gmail.com</SubtleLink> </li>
                 </ul>
