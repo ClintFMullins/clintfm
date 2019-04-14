@@ -1,4 +1,4 @@
-This is my personal site, hosted here: https://clintfmullins.github.io/clintfm
+This is my personal site, hosted here: https://www.clint.fm
 
 It has two primary purposes:
 
@@ -10,4 +10,4 @@ Please do:
 2. Check out the code, let me know what sucks.
 
 Please do not:
-1. Assume I think the code is perfect. This is a solo project with many efforts being done within a day or so. Code quality / browser compaditibiliy / performance only matter so much here.
+1. Assume I think the code is perfect. I know it isn't :). This is a solo project with many efforts being done within a day or so. Code quality / browser compaditibiliy / performance only matter so much here.
