@@ -55,7 +55,6 @@ export const HomepageLink = styled(({ isLeft, ...rest }) => <Link {...rest} />)`
 `;
 
 export const Profile = styled.div`
-  font-family: 'Pacifico', cursive;
   background-color: white;
   font-size: 21px;
   color:hsl(204, 2%, 29%);
