@@ -11,6 +11,7 @@ import { PS1Gen } from '../../features/ps1/component';
 import { LevelUp } from '../../features/level-up/component';
 import { StoryTime } from '../../features/storytime/component';
 import { Reddit } from '../../features/reddit/component';
+import { Versus } from '../../features/versus/component';
 
 export function Projects() {
   return (
@@ -26,6 +27,7 @@ export function Projects() {
       <Route exact path='/play/level' component={LevelUp}/>
       <Route exact path='/play/story' component={StoryTime}/>
       <Route exact path='/play/reddit' component={Reddit}/>
+      <Route exact path='/play/versus' component={Versus}/>
     </Switch>
   );
 }

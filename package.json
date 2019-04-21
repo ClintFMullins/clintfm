@@ -6,11 +6,13 @@
     "ansi-styles": "^3.2.1",
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.0.8",
+    "http-proxy-middleware": "^0.19.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-markdown": "^4.0.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "redis": "^2.8.0",
     "styled-components": "^4.1.2",
     "tinymusic": "^1.0.0"
   },
@@ -18,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lambda": "netlify-lambda serve src/lambda"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,6 +33,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.9.4"
+    "babel-plugin-styled-components": "^1.9.4",
+    "netlify-lambda": "^1.4.5"
   }
 }
