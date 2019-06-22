@@ -18,10 +18,14 @@ const AddMovieInput = styled.input`
   background: transparent;
   color: white;
   border: none;
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 -1px 0 ${props => (props.error ? "#F6341F" : "rgba(255, 255, 255, 0.16)")};
 
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color: ${props => (props.error ? "#F6341F" : "rgba(255, 255, 255, 0.5)")};
   }
 `;
 
@@ -37,9 +41,6 @@ const AddMovieButton = styled.button`
 `;
 const ButtonContainer = styled.div`
   padding: 16px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
 `;
 
@@ -85,7 +86,7 @@ function getApiUrl(query) {
 }
 
 function getScore(json) {
-  const ratings = json["Ratings"];
+  const ratings = json.Ratings;
   let lastRating = null;
 
   for (let idx = 0; idx < ratings.length; idx++) {
@@ -101,17 +102,32 @@ function getScore(json) {
 }
 
 function getName(json) {
-  return json["Title"];
+  return json.Title;
 }
 
 export function FlightFilms() {
   const { height, width } = useWindowSize();
   const [query, setQuery] = useState("");
   const [films, setFilms] = useState([]);
+  const [error, setError] = useState("");
   const ref = useRef();
 
   function onInputChange(event) {
     setQuery(event.currentTarget.value);
+  }
+
+  function setDuplicate() {
+    setQuery("");
+    setError("You already have this film");
+  }
+
+  function setNoFilm() {
+    setQuery("");
+    setError("No matches, try again");
+  }
+
+  function clearError() {
+    setError("");
   }
 
   function addFilm(newFilm) {
@@ -120,21 +136,29 @@ export function FlightFilms() {
         return response.json();
       })
       .then(function(json) {
-        console.log(JSON.stringify(json));
-        if (json["Error"]) {
+        if (json.Error) {
+          setNoFilm();
           return;
         }
 
-        setFilms([
-          ...films,
-          { name: getName(json), score: getScore(json), metadata: json }
-        ]);
+        const name = getName(json);
+
+        if (films.find(film => film.name === name)) {
+          setDuplicate();
+          return;
+        }
+
+        setFilms([...films, { name, score: getScore(json), metadata: json }]);
         setQuery("");
         focusOnInput();
       });
   }
 
   function onKeyPress(event) {
+    if (error) {
+      clearError();
+    }
+
     if (event.keyCode === 13) {
       addFilm(query);
     }
@@ -169,8 +193,9 @@ export function FlightFilms() {
         <AddMovieInput
           value={query}
           onChange={onInputChange}
-          placeholder="Search for film..."
+          placeholder={!!error ? error : "Search for film..."}
           ref={ref}
+          error={!!error}
         />
       </div>
 
@@ -200,12 +225,12 @@ export function FlightFilms() {
               </DetailSection>
             </MovieWrapper>
           ))}
+        <ButtonContainer>
+          <AddMovieButton onClick={() => addFilm(query)}>
+            Add to list
+          </AddMovieButton>
+        </ButtonContainer>
       </div>
-      <ButtonContainer>
-        <AddMovieButton onClick={() => addFilm(query)}>
-          Add to list
-        </AddMovieButton>
-      </ButtonContainer>
     </Page>
   );
 }
