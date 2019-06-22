@@ -81,7 +81,7 @@ const TimeInfo = styled.div`
 `;
 
 function getApiUrl(query) {
-  return `http://www.omdbapi.com/?t=${query}&apikey=22101760`;
+  return `https://www.omdbapi.com/?t=${query}&apikey=22101760`;
 }
 
 function getScore(json) {
