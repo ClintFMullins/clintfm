@@ -105,6 +105,10 @@ function getName(json) {
   return json.Title;
 }
 
+function rottenTomatoImg(type) {
+  return `https://www.rottentomatoes.com/assets/pizza-pie/images/icons/global/${type}.png`;
+}
+
 export function FlightFilms() {
   const { height, width } = useWindowSize();
   const [query, setQuery] = useState("");
@@ -204,18 +208,31 @@ export function FlightFilms() {
           .sort((a, b) => (a.score > b.score ? -1 : 1))
           .map(({ name, score, metadata }) => (
             <MovieWrapper key={name} onClick={() => removeMovie(name)}>
-              <img src={metadata.Poster} alt={name} height="72" width="48" />
+              <img
+                src={
+                  metadata.Poster === "N/A"
+                    ? "https://alumni.ctksfc.ac.uk/files/2015/12/Interview-questions-square-image-1024x768.jpg"
+                    : metadata.Poster
+                }
+                alt={name}
+                height="72"
+                width="48"
+              />
               <DetailSection>
                 <TopDetails>
                   <Name>{name}</Name>
                   <Score>
-                    <Tomato
-                      src={
-                        "https://www.rottentomatoes.com/assets/pizza-pie/images/icons/global/new-fresh.587bf3a5e47.png"
-                      }
-                      height="16px"
-                      width="16px"
-                    />
+                    {score && (
+                      <Tomato
+                        src={
+                          parseInt(score[0]) < 6
+                            ? rottenTomatoImg("new-rotten.efc30acb29c")
+                            : rottenTomatoImg("new-fresh.587bf3a5e47")
+                        }
+                        height="16px"
+                        width="16px"
+                      />
+                    )}
                     {score}
                   </Score>
                 </TopDetails>
