@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { useWindowSize } from "../../../../utils/dom";
 
 const Page = styled.div`
   background: black;
   color: ghostwhite;
-  height: 100vh;
-  width: 100vw;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
   position: relative;
 `;
 
@@ -104,6 +105,7 @@ function getName(json) {
 }
 
 export function FlightFilms() {
+  const { height, width } = useWindowSize();
   const [query, setQuery] = useState("");
   const [films, setFilms] = useState([]);
   const ref = useRef();
@@ -162,7 +164,7 @@ export function FlightFilms() {
   }
 
   return (
-    <Page>
+    <Page height={height} width={width}>
       <div>
         <AddMovieInput
           value={query}

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 
 export function useFocusOnLoad({ select } = {}) {
   const ref = useRef();
@@ -24,18 +24,18 @@ export function useWindowSize() {
   const [height, setHeight] = useState(window.innerHeight);
 
   function updateWindowSize() {
-    if (width !== window.innerWidth) {
+    if (width !== window.innerWidth || height !== window.innerHeight) {
       setWidth(window.innerWidth);
       setHeight(window.innerHeight);
     }
   }
 
   useLayoutEffect(() => {
-    window.addEventListener('resize', updateWindowSize);
+    window.addEventListener("resize", updateWindowSize);
 
     return () => {
-      window.removeEventListener('resize', updateWindowSize)
-    }
+      window.removeEventListener("resize", updateWindowSize);
+    };
   });
 
   return { width, height };
