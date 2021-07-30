@@ -12,6 +12,8 @@ const SubtleLink = styled.a`
   font-weight: 600;
 `;
 
+const LINKEDIN_URL = "https://www.linkedin.com/in/clint-m-5651a161/";
+
 export function Work() {
   const { height } = useWindowSize();
   const [color, setColor] = useState(window.scrollY);
@@ -59,11 +61,7 @@ export function Work() {
             <span className="bold-it">frontend focus</span>.
             <div className="intro-hint">
               Scroll down for information that compliments my{" "}
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://www.linkedin.com/in/clint-mullins-5651a161"
-              >
+              <a rel="noopener noreferrer" target="_blank" href={LINKEDIN_URL}>
                 LinkedIn
               </a>
             </div>
@@ -92,7 +90,7 @@ export function Work() {
                     <SubtleLink
                       rel="noopener noreferrer"
                       target="_blank"
-                      href="https://www.linkedin.com/in/clint-mullins-5651a161"
+                      href={LINKEDIN_URL}
                     >
                       LinkedIn
                     </SubtleLink>{" "}
