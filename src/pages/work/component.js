@@ -125,7 +125,7 @@ export function Work() {
                     experiments of mine
                   </li>
                   <li>
-                    For more professional experience,{" "}
+                    If you want strictly professional experience,{" "}
                     <SubtleLink
                       rel="noopener noreferrer"
                       target="_blank"
@@ -134,6 +134,28 @@ export function Work() {
                       LinkedIn
                     </SubtleLink>{" "}
                     is the place to be
+                  </li>
+                  <li>
+                    Or see the{" "}
+                    <SubtleLink
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href="https://growdoku.netlify.app/growdoku"
+                    >
+                      growing sudoku
+                    </SubtleLink>{" "}
+                    game I made while messing with Remix.run
+                  </li>
+                  <li>
+                    Or{" "}
+                    <SubtleLink
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href="https://gridbingo.netlify.app/?size=3"
+                    >
+                      this thing
+                    </SubtleLink>{" "}
+                    my sister asked me to build for my young nephews :)
                   </li>
                 </ul>
               </p>
