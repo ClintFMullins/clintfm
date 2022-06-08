@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CorePrinciples } from "./components/core-principles/component";
 import { TechSkills } from "./components/tech-skills/component";
 import styled from "styled-components";

@@ -14,7 +14,6 @@ import { StoryTime } from "../../features/storytime/component";
 import { Reddit } from "../../features/reddit/component";
 import { Versus } from "../../features/versus/component";
 import { Decode } from "../../features/decode/component";
-import { Sudoku } from "../../features/sudoku/component";
 
 export function Projects() {
   return (
@@ -33,7 +32,6 @@ export function Projects() {
       <Route exact path="/play/versus" component={Versus} />
       <Route exact path="/play/flight" component={FlightFilms} />
       <Route exact path="/play/decode" component={Decode} />
-      <Route exact path="/play/sudoku" component={Sudoku} />
     </Switch>
   );
 }
