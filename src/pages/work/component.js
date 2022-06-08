@@ -13,11 +13,13 @@ const SubtleLink = styled.a`
 `;
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/clint-m-5651a161/";
+const MIN_SCALE = 1.5;
 
 export function Work() {
   const { height } = useWindowSize();
   const [color, setColor] = useState(window.scrollY);
-  const timeoutId = useRef(null);
+  const [scale, setScale] = useState(MIN_SCALE);
+  const [opacity, setOpacity] = useState(1);
 
   function throttledOnScroll(scrollPosition) {
     const newHue = (scrollPosition / SCALE_FACTOR) % 360;
@@ -26,13 +28,25 @@ export function Work() {
   }
 
   function onScroll() {
-    if (timeoutId.current) {
-      clearTimeout(timeoutId.current);
-    }
+    const transitionLength = height / 1.5;
+    const startHeight = 0;
+    const endHeight = startHeight + transitionLength;
 
-    timeoutId.current = setTimeout(function () {
+    const num = convertRange(
+      window.scrollY,
+      [startHeight, endHeight],
+      [0, 100]
+    );
+    setOpacity(clamp((100 - num) / 100, 0, 1));
+    setScale(clamp(convertRange(num, [0, 100], [1.5, 5]), 1.5, 5));
+
+    const timeoutId = setTimeout(function () {
       throttledOnScroll(window.scrollY);
     }, 50);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }
 
   useEffect(() => {
@@ -50,15 +64,33 @@ export function Work() {
       }}
     >
       <div className="work">
-        <div className="intro" style={{ height }}>
-          <div>
-            Hi, my name is
-            <br />
-            <span className="bold-it">Clint Mullins</span>.
-            <br />
-            <br />
-            I'm a <span className="bold-it">tech lead</span> with a{" "}
-            <span className="bold-it">frontend focus</span>.
+        <div
+          className="intro"
+          style={{
+            height,
+            transform: `scale(${scale})`,
+            opacity,
+            pointerEvents: window.scrollY > 200 ? "none" : "inherit",
+          }}
+        >
+          <div className="intro-wrapper">
+            <div className="intro-sec">
+              <div className="intro-text">Hi, my name is</div>{" "}
+              <div className="bold-it intro-text-right">Clint Mullins</div>
+            </div>
+            <div className="intro-sec">
+              <div className="intro-text">I'm a </div>
+              <div className="intro-text-right">
+                <span className="bold-it">tech lead</span> &{" "}
+                <div className="bold-it">engineering manager</div>
+              </div>
+            </div>
+            <div className="intro-sec">
+              <div className="intro-text">with a love for </div>
+              <div className="fe-focus intro-text-right">
+                a/b testing & <br /> user delight
+              </div>
+            </div>
             <div className="intro-hint">
               Scroll down for information that compliments my{" "}
               <a rel="noopener noreferrer" target="_blank" href={LINKEDIN_URL}>
@@ -104,4 +136,12 @@ export function Work() {
       </div>
     </div>
   );
+}
+
+function convertRange(value, r1, r2) {
+  return ((value - r1[0]) * (r2[1] - r2[0])) / (r1[1] - r1[0]) + r2[0];
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(min, value), max);
 }

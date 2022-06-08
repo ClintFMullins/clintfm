@@ -1,5 +1,6 @@
 .work-wrapper {
   background: rgb(255, 255, 251);
+  overflow: hidden;
 }
 
 .work {
@@ -19,8 +20,36 @@
   font-size: 20px;
 }
 
+.fe-focus {
+  font-weight: 600;
+  font-size: 20px;
+  background: radial-gradient(circle, rgb(0 106 255) 0%, rgb(255 0 231) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro-wrapper {
+  width: 300px;
+  padding: 10px 20px;
+}
+
+.intro-text {
+  display: flex;
+  align-items: end;
+}
+
+.intro-text-right {
+  text-align: right;
+}
+
+.intro-sec {
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: bottom;
+}
+
 .intro {
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
