@@ -13,7 +13,8 @@ const SubtleLink = styled.a`
 `;
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/clint-m-5651a161/";
-const MIN_SCALE = 1.5;
+const MIN_SCALE = 1;
+const MAX_SCALE = 5;
 
 export function Work() {
   const { height } = useWindowSize();
@@ -38,7 +39,13 @@ export function Work() {
       [0, 100]
     );
     setOpacity(clamp((100 - num) / 100, 0, 1));
-    setScale(clamp(convertRange(num, [0, 100], [1.5, 5]), 1.5, 5));
+    setScale(
+      clamp(
+        convertRange(num, [0, 100], [MIN_SCALE, MAX_SCALE]),
+        MIN_SCALE,
+        MAX_SCALE
+      )
+    );
 
     const timeoutId = setTimeout(function () {
       throttledOnScroll(window.scrollY);
