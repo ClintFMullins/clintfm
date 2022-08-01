@@ -157,6 +157,18 @@ export function Work() {
                     </SubtleLink>{" "}
                     my sister asked me to build for my young nephews :)
                   </li>
+                  <li>
+                    Or{" "}
+                    <SubtleLink
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href="https://craftbuild.netlify.app/"
+                    >
+                      this minecraft build instruction toy
+                    </SubtleLink>{" "}
+                    I made in just a few hours thanks to the amazing tooling out
+                    there
+                  </li>
                 </ul>
               </p>
             </div>
