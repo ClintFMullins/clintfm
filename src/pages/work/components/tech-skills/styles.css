@@ -1,7 +1,8 @@
 .tech-skills-wrapper {
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
   padding-bottom: 20px;
   width: 600px;
   max-width: 95%;

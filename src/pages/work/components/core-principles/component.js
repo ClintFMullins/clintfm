@@ -1,19 +1,17 @@
-import React from 'react';
-import { useWindowSize } from '../../../../utils/dom';
+import React from "react";
+import { useWindowSize } from "../../../../utils/dom";
 
 const SECTION_TITLE_TO_TEXT = {
-  'Exhibit ownership': `I try to always think like an owner and encourage others to as well. If we all collectively own our product/code/workplace we can care for it together.`,
+  "Selfless ownership": `Own your work, but don't miss good collaboration opportunities to make it better.`,
 
-  'Be pragmatic': `The best path forward is something that depends on the context of a problem. The process that works well for one project could doom another.`,
+  "Be pragmatic": `There's no silver bullet, ever. Choose the right trade-offs for each situation.`,
 
-  'Align before execution': `I write specs, ask hard questions, build prototypes as needed, and expect transparency from everyone to get proper plans in place.`,
+  "Align often": `Write plans, make prototypes, build in pieces. Share it all frequently.`,
 
-  'Measure and iterate': `Measure the impact of your changes, and use those measurements to inform further iterations.`,
+  "Measure and iterate": `Measure your impact, iterate to improve it.`,
 
-  'Be product obsessed': 'Teams who challenge each other and have tough conversations will build better products. I encourage all engineers to ask product/design/data folks about their decisions. Sometimes you find a solid foundation and other times you find holes that need to be filled. Regardless of findings, everyone hardens their understanding of the product and how to move forward.',
-
-  'Be demanding, but understanding': `I believe my most rewarding times at work have been when I am invested, productive, and working hard. I generally expect my coworkers to give a similar level of effort within a standard work week. I'm also empathetic to the curveballs life can throw and realize giving 100% for 40ish hours a week isn't always on the table.`
-}
+  "Be demanding, but understanding": `Expect the best from your team, but prepare for the unexpected speedbumps`,
+};
 
 export function CorePrinciples() {
   const { height } = useWindowSize();
@@ -31,5 +29,5 @@ export function CorePrinciples() {
         })}
       </div>
     </div>
-  )
+  );
 }
