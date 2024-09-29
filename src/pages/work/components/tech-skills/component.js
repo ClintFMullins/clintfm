@@ -17,7 +17,7 @@ export function TechSkills() {
       <br />
       <br />
       <div>
-        <h3>❤️ Favorites</h3>
+        <h3>❤️ Favorites</h3>/* eslint-disable jsx-a11y/accessible-emoji */
         <div className="tech-skills-skill-wrapper">
           {SORTED_FAVORITES.map((tech) => {
             return <TechSkill techSkill={tech} />;
@@ -25,7 +25,7 @@ export function TechSkills() {
         </div>
       </div>
       <div>
-        <h3>🔧 Recent</h3>
+        <h3>🔧 Recent</h3>/* eslint-disable jsx-a11y/accessible-emoji */
         <div className="tech-skills-skill-wrapper">
           {SORTED_RECENT.map((tech) => {
             return <TechSkill techSkill={tech} />;
@@ -33,7 +33,7 @@ export function TechSkills() {
         </div>
       </div>
       <div>
-        <h3>📀 Not So Recent</h3>
+        <h3>📀 Not So Recent</h3>/* eslint-disable jsx-a11y/accessible-emoji */
         <div className="tech-skills-skill-wrapper">
           {LESS_RECENT.map((tech) => {
             return <TechSkill techSkill={tech} />;
@@ -41,7 +41,8 @@ export function TechSkills() {
         </div>
       </div>
       <div>
-        <h3>🎨 For fun, dabbled in...</h3>
+        <h3>🎨 For fun, dabbled in...</h3>/* eslint-disable
+        jsx-a11y/accessible-emoji */
         <div className="tech-skills-skill-wrapper">
           {SORTED_DABBLE.map((tech) => {
             return <TechSkill techSkill={tech} />;
